@@ -1,0 +1,98 @@
+﻿@model WEBDOGO.Models.NHANVIENTAICHINH
+@{
+    Layout = null;
+
+    List<SelectListItem> trangthailamviec = new List<SelectListItem>
+{
+    new SelectListItem {Value = "Đang làm", Text = "Đang làm"},
+    new SelectListItem {Value = "Đã Nghỉ Việc", Text = "Đã Nghỉ Việc"},
+    new SelectListItem {Value = "Nghỉ Phép", Text = "Nghỉ Phép"},
+    };
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sản Phẩm Theo Yêu Cầu</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/chitietquanlyyeucau.css")?v=@DateTime.Now.Ticks">
+</head>
+<body>
+    <div class="container">
+        <h2>Thông tin nhân viên</h2>
+        @using (Html.BeginForm("luucapnhapnvtc", "ADMIN", FormMethod.Post))
+        {
+            <div class="form-row">
+                <!-- Cột 1 -->
+                <div class="form-column">
+                    <div class="form-group" hidden>
+                        <label>Mã nhân viên:</label>
+                        @Html.TextBoxFor(m => m.MANHANVIENTAICHINH, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tên nhân viên:</label>
+                        @Html.TextBoxFor(m => m.TENNHANVIENTAICHINH, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tuổi:</label>
+                        @Html.TextBoxFor(m => m.TUOI, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DIACHI">Địa Chỉ</label>
+                        @Html.TextBoxFor(m => m.DIACHI, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="SDT">Số Điện Thoại</label>
+                        @Html.TextBoxFor(m => m.SDT, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="SOCCCD">Số CCCD</label>
+                        @Html.TextBoxFor(m => m.SOCCCD, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tendangnhap">Tên Đăng Nhập</label>
+                        @Html.TextBoxFor(m => m.TENDANGNHAP, new { @readonly = "readonly" })
+                    </div>
+                </div>
+
+                <!-- Cột 2 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="ngayvaolam">Ngày vào làm:</label>
+                        <input type="text" value="@Model.NGAYVAOLAM" />
+                        @Html.TextBoxFor(m => m.NGAYVAOLAM, new { @type = "date" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="trangthailamviec">Trạng thái làm việc:</label>
+                        @Html.DropDownListFor(m => m.TRANGTHAI, trangthailamviec, "Chọn trạng thái làm việc", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ngaynghilam">Ngày nghỉ làm:</label>
+                        <input type="text" value="@Model.NGAYNGHILAM" />
+                        @Html.TextBoxFor(m => m.NGAYNGHILAM, new { @type = "date" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <button type="submit" class="btn-save" style="background-color: mediumturquoise">Cập nhập</button>
+                <button type="button" class="btn-save" style="background-color: #09b082" onclick="location.href='@Url.Action("caplaimatkhau", "ADMIN", new {id = Model.MANHANVIENTAICHINH, loai = 1} )'">Cấp lại mật khẩu</button>
+                <a href="@Url.Action("showtrangquanly","ADMIN")" class="btn-save" style="background-color: gray; margin-top: 50px">Quay lại</a>
+
+
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+
+

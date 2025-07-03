@@ -1,0 +1,156 @@
+﻿@model WEBDOGO.Models.SanPhamTheoYeuCauKhachHangViewModel
+@{
+    Layout = null;
+    List<SelectListItem> trangthaiduyet = new List<SelectListItem>
+{
+    new SelectListItem { Text = "Chưa duyệt", Value = "Chưa duyệt" },
+    new SelectListItem { Text = "Duyệt", Value = "Duyệt" },
+    new SelectListItem { Text = "Không thể làm", Value = "Không thể làm" },
+};
+
+    List<SelectListItem> mausacgo = new List<SelectListItem>
+    {
+        new SelectListItem { Text = "Màu gỗ đỏ", Value = "Màu gỗ đỏ"},
+        new SelectListItem { Text = "Màu nâu cánh gián", Value = "Màu nâu cánh gián"},
+        new SelectListItem { Text = "Màu đen mun", Value = "Màu đen mun"},
+        new SelectListItem { Text = "Màu nâu vàng", Value = "Màu nâu vàng"},
+        new SelectListItem { Text = "Màu vàng mật ong", Value = "Màu vàng mật ong"},
+        new SelectListItem { Text = "Màu gỗ xám", Value = "Màu gỗ xám"},
+        new SelectListItem { Text = "Màu trắng", Value = "Màu trắng"},
+    };
+
+    List<SelectListItem> khachhangchapnhan = new List<SelectListItem>
+    {
+        new SelectListItem { Text = "Chưa có", Value = "Chưa có" },
+        new SelectListItem { Text = "Chấp nhận", Value = "Chấp nhận" },
+        new SelectListItem { Text = "Hủy đơn hàng", Value = "Hủy đơn hàng" },
+    };
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sản Phẩm Theo Yêu Cầu</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/chitietquanlyyeucau.css")?v=@DateTime.Now.Ticks">
+</head>
+<body>
+    <div class="container">
+        <h2>Quản Lý Sản Phẩm Theo Yêu Cầu</h2>
+        @using (Html.BeginForm("luuthongtinsanphamtheoyeucau", "Nhanviensanxuat", FormMethod.Post))
+        {
+            <div class="form-row">
+                <!-- Cột 1 -->
+                <div class="form-column">
+                    <!-- Trường Tên Khách Hàng -->
+                    <div class="form-group">
+                        <label for="MAKHACHHANG">Tên Khách Hàng:</label>
+                        @Html.TextBoxFor(m => m.TenKhachHang, new { @readonly = "readonly" })
+                    </div>
+
+                    <!-- Trường Loại Sản Phẩm -->
+                    <div class="form-group">
+                        <label for="LOAISANPHAM">Loại Sản Phẩm:</label>
+                        @Html.TextBoxFor(m => m.SanPham.LOAISANPHAM, new { @readonly = "readonly" })
+                    </div>
+
+                    <!-- Trường Chiều Dài -->
+                    <div class="form-group">
+                        <label for="CHIEUDAI">Chiều Dài (m):</label>
+                        @Html.TextBoxFor(m => m.SanPham.CHIEUDAI, new { @required = "required" })
+                    </div>
+
+                    <!-- Trường Chiều Rộng -->
+                    <div class="form-group">
+                        <label for="CHIEURONG">Chiều Rộng (m):</label>
+                        @Html.TextBoxFor(m => m.SanPham.CHIEURONG, new { @required = "required" })
+                    </div>
+
+                    <!-- Trường Chiều Cao -->
+                    <div class="form-group">
+                        <label for="CHIEUCAO">Chiều Cao (m):</label>
+                        @Html.TextBoxFor(m => m.SanPham.CHIEUCAO, new { @required = "required" })
+                    </div>
+
+                    <!-- Trường Vật Liệu -->
+                    <div class="form-group">
+                        <label for="VATLIEU">Vật Liệu:</label>
+                        @Html.TextBoxFor(m => m.SanPham.VATLIEU, new { @required = "required" })
+                    </div>
+                </div>
+
+                <!-- Cột 2 -->
+                <div class="form-column">
+                    <!-- Trường Màu Sắc -->
+                    <div class="form-group">
+                        <label for="MAUSAC">Màu Sắc:</label>
+                        @Html.TextBoxFor(m => m.SanPham.MAUSAC, new { @required = "required" })
+                    </div>
+
+                    <!-- Trường Số Lượng -->
+                    <div class="form-group">
+                        <label for="SOLUONG">Số Lượng:</label>
+                        @Html.TextBoxFor(m => m.SanPham.SOLUONG, new { @required = "required" })
+                    </div>
+
+                    <!-- Trường Tổng Số Tiền Sản Xuất -->
+                    <div class="form-group">
+                        <label for="TONGSOTIENSANXUAT">Tổng Số Tiền Sản Xuất (VND):</label>
+                        @Html.TextBoxFor(m => m.SanPham.TONGSOTIENSANXUAT, new { @required = "required" })
+                    </div>
+
+                    <!-- Trường Trạng Thái Duyệt -->
+                    <div class="form-group">
+                        <label for="TRANGTHAIDUYET">Trạng Thái Duyệt:</label>
+                        @Html.DropDownListFor(m => m.SanPham.TRANGTHAIDUYET, trangthaiduyet, "Chọn trạng thái", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="KHCHAPNHAN">Chấp Nhận Của Khách Hàng:</label>
+                        @Html.DropDownListFor(m => m.SanPham.KHACHHANGCHAPNHAN, khachhangchapnhan, "Chọn trạng thái", new { @class = "form-control" })
+                    </div>
+
+                    <!-- Trường Mã Hóa Đơn -->
+                    <div class="form-group">
+                        <label for="MAHOADON">Mã Hóa Đơn:</label>
+                        @Html.TextBoxFor(m => m.SanPham.MAUSAC, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="MASANPHAMTHEOYEUCAU">Mã sản phẩm theo yêu cầu:</label>
+                        @Html.TextBoxFor(m => m.SanPham.MASANPHAMTHEOYEUCAU, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="MAHOADON">Mã Hóa Đơn:</label>
+                        @Html.TextBoxFor(m => m.SanPham.MAHOADON, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="idkhachhang">idkhachhang:</label>
+                        @Html.TextBoxFor(m => m.idkhachhang, new { @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trường Mô Tả Sản Phẩm -->
+            <div class="form-group">
+                <label for="MOTASANPHAM">Mô Tả Sản Phẩm:</label>
+                @Html.TextBoxFor(m => m.SanPham.MOTASANPHAM, new { @readonly = "readonly" })
+            </div>
+
+            <div class="form-group">
+                <label for="ANHSANPHAM">Ảnh Sản Phẩm:</label>
+                <img style="width: 200px" src="@Model.SanPham.ANHMINHHOA" />
+                @Html.TextBoxFor(m => m.SanPham.ANHMINHHOA, new { @readonly = "readonly", @hidden = "hidden" })
+            </div>
+
+            <!-- Nút Lưu -->
+            <div class="form-group full-width">
+                <button type="submit" class="btn-save">Lưu</button>
+            </div>
+        }
+    </div>
+</body>
+</html>
+

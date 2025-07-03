@@ -1,0 +1,120 @@
+﻿@model WEBDOGO.Models.TIENDOSANXUAT
+
+@{
+    Layout = null;
+
+    List<SelectListItem> giaidoansanxuat = new List<SelectListItem>
+{
+        new SelectListItem {Value = "Lập kế hoạch và thiết kế", Text = "Lập kế hoạch và thiết kế"},
+        new SelectListItem {Value = "Xử lý nguyên liệu", Text = "Xử lý nguyên liệu"},
+        new SelectListItem {Value = "Gia công sản phẩm", Text = "Gia công sản phẩm"},
+        new SelectListItem {Value = "Xử lý bề mặt", Text = "Xử lý bề mặt"},
+        new SelectListItem {Value = "Lắp ráp", Text = "Lắp ráp"},
+        new SelectListItem {Value = "Hoàn thiện",Text= "Hoàn thiện"}
+    };
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sản Phẩm Theo Yêu Cầu</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/chitietquanlyyeucau.css")?v=@DateTime.Now.Ticks">
+</head>
+<body>
+    <div class="container">
+        <h2>Tiến độ sản xuất của tôi</h2>
+        @using (Html.BeginForm("tiendocuatoi", "Nhanviensanxuat", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-row">
+                <!-- Cột 1 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="MATIENDOSANXUAT">Mã tiến độ sản xuất:</label>
+                        @Html.TextBoxFor(m => m.MATIENDOSANXUAT, new { @readonly = "readonly" })
+                    </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYSANXUAT">Ngày sản xuất:</label>
+                        @Html.TextBoxFor(m => m.NGAYSANXUAT, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYDUKIEN">Ngày dự kiến:</label>
+                        @Html.TextBoxFor(m => m.NGAYDUKIENHOANTHANH, new { })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYHOANTHANH">Ngày hoàn thành:</label>
+                        @Html.TextBoxFor(m => m.NGAYHOANTHANHTHUCTE, new { })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="GIAIDOANSANXUAT">Giai đoạn sản xuất:</label>
+                        @Html.TextBoxFor(m => m.GIAIDOANSANXUAT, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="MANHANVIEN">Mã nhân viên:</label>
+                        @Html.TextBoxFor(m => m.MANHANVIENSANXUAT, new { })
+                    </div>
+                </div>
+
+
+
+                <!-- Cột 2 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="MOTA">Mô Tả:</label>
+                        @Html.TextAreaFor(m => m.MOTA, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="SOLUONG">Số lượng:</label>
+                        @Html.TextBoxFor(m => m.SOLUONG, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="MASANPHAMTHEOYEUCAU">Mã sản phẩm theo yêu cầu:</label>
+                        @Html.TextBoxFor(m => m.MASANPHAMTHEOYEUCAU, new { @readonly = "readonly" })
+                    </div>
+
+                    @Html.TextBoxFor(m => m.ANHMINHHOA, new { @readonly = "readonly", @hidden = "hidden" })
+                    @Html.TextBoxFor(m => m.NGHIEMTHU, new { @readonly = "readonly", @hidden = "hidden" })
+
+
+                    <div class="form-group">
+                        <label for="anhminhhoa">Ảnh sản phẩm của từng giai đoạn:</label>
+                        <input type="file" name="HinhAnh" class="form-control" />
+                    </div>
+                </div>
+
+            <div class="form-group">
+                <label for="ANHSANPHAM">Ảnh Sản Phẩm:</label>
+                <img style="width: 200px" src="@Model.ANHMINHHOA" />
+            </div>
+
+            if (Model.NGHIEMTHU == "Chờ xác nhận" && Model.GIAIDOANSANXUAT != "Hoàn thiện")
+            {
+                <div class="form-group full-width">
+                    <button type="submit" disabled class="btn-save">Đợi phê duyệt</button>
+                </div>
+            }
+            else if (Model.NGHIEMTHU == "Đang chờ" && Model.GIAIDOANSANXUAT != "Hoàn thiện" || Model.NGHIEMTHU == "Không phê duyệt" && Model.GIAIDOANSANXUAT != "Hoàn thiện")
+            {
+                <div class="form-group full-width">
+                    <button type="submit" class="btn-save" style="background-color: forestgreen">Gửi phê duyệt</button>
+                </div>
+            }
+            else if (Model.GIAIDOANSANXUAT == "Hoàn thiện")
+            {
+                <div class="form-group full-width">
+                    <button type="submit" class="btn-save">Quay lại</button>
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>
+

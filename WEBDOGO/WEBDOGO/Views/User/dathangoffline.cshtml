@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "dathangoffline";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+}
+
+<style>
+    .confirm-box {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #e7f7e7;
+        border: 1px solid #a3dca3;
+        border-radius: 8px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+
+        .confirm-box h2 {
+            color: #2e7d32;
+        }
+
+        .confirm-box p {
+            color: #555;
+        }
+
+        .confirm-box button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .confirm-box button:hover {
+                background-color: #388e3c;
+            }
+</style>
+<div class="confirm-box">
+    <h2>Xác nhận thành công</h2>
+    <p>Cảm ơn bạn! đơn hàng đã được tạo và đơn hàng được thanh toán khi nhận được hàng.</p>
+    <button onclick="location.href='@Url.Action("TrangChu","TrangChu")'">Quay lại trang chủ</button>
+</div>
+
+

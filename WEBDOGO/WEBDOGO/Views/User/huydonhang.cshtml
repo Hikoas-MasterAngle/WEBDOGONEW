@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Hủy đơn hàng";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+}
+
+<style>
+    .confirm-box {
+        max-width: 400px;
+        margin: 50px auto;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .confirm-box h2 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .confirm-box p {
+            margin: 0;
+            font-size: 1em;
+            color: #555;
+        }
+
+        .confirm-box button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+            .confirm-box button:hover {
+                background-color: #388e3c;
+            }
+
+        /* Style cho trạng thái không thành công */
+        .confirm-box.error {
+            background-color: #fff3e0;
+            border: 1px solid #ff9800;
+        }
+
+            .confirm-box.error h2 {
+                color: #e65100;
+            }
+
+            .confirm-box.error p {
+                color: #bf360c;
+            }
+
+        /* Style cho trạng thái thành công */
+        .confirm-box.success {
+            background-color: #e7f7e7;
+            border: 1px solid #a3dca3;
+        }
+
+            .confirm-box.success h2 {
+                color: #2e7d32;
+            }
+</style>
+
+@if (ViewBag.huydon == false)
+{
+    <div class="confirm-box error">
+        <h2>Hủy đơn hàng không thành công</h2>
+        <p>Bạn không thể hủy đơn hàng vì đang được vận chuyển hoặc lý do khác.</p>
+        <button onclick="location.href='@Url.Action("TrangChu", "TrangChu")'">Quay lại trang chủ</button>
+    </div>
+}
+else
+{
+    <div class="confirm-box success" style="width: 400px">
+        <h2>Hủy đơn hàng thành công</h2>
+        <p>Bạn đã hủy đơn hàng thành công!</p>
+        <button onclick="location.href='@Url.Action("TrangChu", "TrangChu")'">Quay lại trang chủ</button>
+    </div>
+}

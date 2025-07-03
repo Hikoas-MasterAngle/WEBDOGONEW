@@ -1,0 +1,147 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url(../IMG/No-sanpham/nendangnhap.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.khungdangky {
+    text-align: center;
+    height: 480px;
+    width: 500px;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 2px solid  rgba(255, 255, 255, 0.5);
+}
+
+.all form h1 {
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+.input-box {
+    position: relative;
+    margin-top: 20px;
+}
+
+#thongbaofalse {
+    background-color: #dc2222;
+}
+
+.input-box input {
+    background-color: transparent;
+    height: 50px;
+    border-radius: 20px;
+    padding-left: 20px;
+    width: 75%;
+    outline: none;
+    border: 1px solid;
+    border-color: rgba(255, 255, 255, 0.5);
+    font-size: 16px;
+    color: #fff;
+}
+
+.input-box input::placeholder {
+    color: #fff;
+}
+
+.input-box i {
+    font-size: 30px;
+    margin-left: 320px;
+    margin-top: 8px;
+    position: absolute;
+}
+
+.input-box input:focus {
+    outline: none;
+}
+
+.checkbox {
+    margin-top: 15px;
+    margin-left: 65px;
+    display: flex;
+    
+}
+
+.checkbox input {
+     width: 20px;
+     height: 20px;
+}
+
+.checkbox p {
+    margin-left: 12px;
+    color: #c9c9c9;
+}
+
+.checkbox a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.dangky button{
+    margin-top: 30px;
+    width: 75%;
+    height: 45px;
+    font-size: 18px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+}
+
+.dangky button:hover {
+    cursor: pointer;
+}
+
+.alert-false {
+    margin-top: 44px;
+    position: absolute;
+    visibility: hidden;
+    z-index: 999;
+    height: 100px;
+    width: 370px;
+    background-color: #F25C5D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+}
+
+.warning {
+    width: 70px;
+    color: white;
+    margin-right: 20px;
+}
+
+.noidungthongbao {
+    color: white;
+    font-size: 14px;
+}
+
+    .noidungthongbao p {
+        margin: 0px;
+    }
+
+.all form {
+    text-align: center;
+    height: 480px;
+    width: 500px;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}

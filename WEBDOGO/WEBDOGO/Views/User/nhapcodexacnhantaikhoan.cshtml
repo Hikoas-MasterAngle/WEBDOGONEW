@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Content/dangnhap.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Đăng Nhập</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <script src="~/Scripts/dangnhap.js" defer></script>
+    <div class="all">
+
+        <form action="@Url.Action("nhapcodexacnhantaikhoan", "User")" method="post" class="khungdangnhap" style="height: 500px">
+            @Html.AntiForgeryToken()
+            <h1>Nhập code xác nhận</h1>
+            <div class="input-box">
+                <input type="text" name="userinputcode" placeholder="Nhập mã code từ gmail" required maxlength="4">
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="btndangnhap">
+                <button type="submit">Xác nhận</button>
+            </div>
+            <div class="chuacotaikhoan">
+                <p>Quay lại trang chủ ? <a href="@Url.Action("Trangchu","TrangChu")">Xác nhận</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

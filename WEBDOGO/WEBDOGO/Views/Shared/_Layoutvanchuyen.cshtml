@@ -1,0 +1,151 @@
+﻿@{
+    var nv = (WEBDOGO.Models.NHANVIENVANCHUYEN)Session["taikhoan"];
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao diện Admin</title>
+    <link rel="stylesheet" href="~/Content/quanly.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Các Script của Bootstrap và jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <style>
+        .button-29 {
+            width: 200px;
+            align-items: center;
+            appearance: none;
+            background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+            border: 0;
+            border-radius: 6px;
+            box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: "JetBrains Mono",monospace;
+            height: 48px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s,transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow,transform;
+            font-size: 18px;
+            position: fixed; /* Giữ vị trí cố định */
+            bottom: 0; /* Canh phía dưới màn hình */
+            margin-bottom: 20px;
+            z-index: 9999;
+        }
+
+            .button-29:focus {
+                box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+            }
+
+            .button-29:hover {
+                box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+                transform: translateY(-2px);
+            }
+
+            .button-29:active {
+                box-shadow: #3c4fe0 0 3px 7px inset;
+                transform: translateY(2px);
+            }
+    </style>
+
+    <div class="container1">
+        <!-- Thanh Sidebar -->
+        <aside class="sidebar">
+            <h2>Nhân viên vận chuyển</h2>
+            <ul>
+                @if (nv.VAITRO == "Trưởng VC")
+                {
+                    <li><a href="@Url.Action("showgiaodienquanly", "Nhanvienvanchuyen")" onclick="showSection('quanlyvanchuyen')">Quản lý vận chuyển</a></li>
+                }
+                else
+                {
+                    <li><a href="@Url.Action("showvanchuyencuatoi", "Nhanvienvanchuyen")" onclick="showSection('vanchuyencuatoi')">Vận chuyển của tôi</a></li>
+                }
+
+                <button class="button-29" role="button" onclick="location.href='@Url.Action("dangxuat","Dangxuat")'">Đăng xuất</button>
+            </ul>
+        </aside>
+
+        <!-- Nội dung chính -->
+        <main class="main-content">
+            <h1>Chào mừng đến với giao diện quản lý của nhân viên vận chuyển</h1>
+            @if (nv.VAITRO == "Trưởng VC")
+            {
+                <div id="quanlyvanchuyen" class="content-section" >
+                    <h2>Quản lý vận chuyển</h2>
+
+                    @Html.Action("timkiemvc", "Nhanvienvanchuyen")
+                    @RenderBody()
+
+                </div>
+            }
+            else
+            {<div id="vanchuyencuatoi" class="content-section">
+                    <h2>Vận chuyển của tôi</h2>
+                    <!-- Nội dung quản lý sản phẩm theo yêu cầu -->
+                    @Html.Action("timkiemvc", "Nhanvienvanchuyen")
+                    @RenderBody()
+                </div>
+
+            }
+
+        </main>
+    </div>
+    <script src="~/Scripts/quanly.js" defer></script>
+    <style>
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .search-input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        .search-button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+            .search-button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</body>
+</html>
+
+

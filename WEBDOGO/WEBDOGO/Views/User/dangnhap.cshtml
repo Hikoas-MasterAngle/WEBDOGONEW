@@ -1,0 +1,119 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="~/Content/dangnhap.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Đăng Nhập</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <script src="~/Scripts/nof12.js"></script>
+    <script src="~/Scripts/chongxss.js"></script>
+    <script src="~/Scripts/dangnhap.js" defer></script>
+    <style>
+        .google-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #fff;
+            color: #444;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 10px 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            margin-top: 20px;
+        }
+
+            .google-login-btn:hover {
+                background-color: #f1f1f1;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+                text-decoration: none;
+                color: #222;
+            }
+
+            .google-login-btn img {
+                width: 20px;
+                height: 20px;
+            }
+        #thongbaothanhcong {
+            background-color: forestgreen;
+        }
+    </style>
+
+
+    @if (TempData["dangnhapthanhcong"] != null && (bool)TempData["dangnhapthanhcong"] == false)
+    {
+        <div class="alert-false alert-primary" role="alert" id="thongbaofalse">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="warning size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <div class="noidungthongbao">
+                <p>@ViewBag.thongbao</p>
+            </div>
+        </div>
+    }
+
+    @if (TempData["resetmatkhau"] != null)
+    {
+        <div class="alert-false alert-primary" role="alert" id="@((bool)TempData["resetmatkhau"] == true ? "thongbaothanhcong" : "thongbaofalse")">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="warning size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <div class="noidungthongbao">
+                <p>@TempData["ThongBao"]</p>
+            </div>
+        </div>
+    }
+
+    @if (TempData["dangkytaikhoanthanhcong"] != null && (bool)TempData["dangkytaikhoanthanhcong"] == true)
+    {
+        <div class="alert-false alert-primary" role="alert" id="thongbaothanhcong" style="background-color: chartreuse">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="warning size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <div class="noidungthongbao">
+                <p style="font-weight: bold;">Đăng ký tài khoản thành công !!!</p>
+            </div>
+        </div>
+    }
+
+    <div class="all">
+        <form action="@Url.Action("dangnhap", "User")" method="post" class="khungdangnhap" style="height: 500px" id="formDangNhap">
+            <h1>Đăng Nhập</h1>
+            <div class="input-box">
+                <input type="text" name="taikhoan" placeholder="Tên Tài Khoản" required maxlength="50">
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="matkhau" placeholder="Mật Khẩu" required maxlength="10">
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="g-recaptcha" data-sitekey="6LetciorAAAAAL5M9bw6fHwXP6ouC3T5CFljWZ0l" style="display:flex; justify-content:center"></div>
+
+            <div class="quenmatkhau"><a href="@Url.Action("quenmatkhau","User")">Quên Mật Khẩu ?</a></div>
+            <div class="btndangnhap">
+                <button type="submit">Đăng Nhập</button>
+            </div>
+            <div class="chuacotaikhoan">
+                <p>Bạn Chưa Có Tài Khoản ? <a href="@Url.Action("dangky","User")">Đăng ký</a></p>
+            </div>
+            <a href="@Url.Action("LoginWithGoogle", "User")" class="google-login-btn">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" />
+                <span>Đăng nhập bằng Google</span>
+            </a>
+        </form>
+    </div>
+</body>
+</html>

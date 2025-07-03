@@ -1,0 +1,21 @@
+﻿@model WEBDOGO.Models.SANPHAM
+
+@{
+    List<SelectListItem> loaisanpham = new List<SelectListItem>
+{
+        new SelectListItem { Value = "Tượng gỗ", Text = "Tượng gỗ" },
+        new SelectListItem { Value = "Bình - Lục bình", Text = "Bình - Lục bình" },
+        new SelectListItem { Value = "Nội thất", Text = "Nội thất" },
+        new SelectListItem { Value = "Phong thủy", Text = "Phong thủy" },
+        new SelectListItem { Value = "Gia dụng", Text = "Gia dụng" },
+    };
+}
+
+
+@using (Html.BeginForm("timkiemsanpham", "TrangChu", FormMethod.Post, new { @class = "chuanoidungtimkiem", id = "formTimKiem" }))
+{
+    @Html.DropDownListFor(m => m.LOAISANPHAM, loaisanpham, "ALL", new { @class = "danhsach" });
+    @Html.TextBoxFor(m => m.TENSANPHAM, new { @class = "noidungnhaptimkiem", @placeholder = "Tìm kiếm sản phẩm ... ", id = "tenSanPham" })
+    <button type="submit" class="btntimkiem"></button>
+}
+

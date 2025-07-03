@@ -1,0 +1,70 @@
+﻿@model WEBDOGO.Models.KHACHHANG
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="@Url.Content("~/Content/dangky.css")?v=@DateTime.Now.Ticks">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Đăng Ký</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <script src="~/Scripts/dangky.js" defer></script>
+    <script src="~/Scripts/nof12.js"></script>
+
+    @if (@ViewBag.thongbao != null)
+    {
+        <div class="alert-false alert-primary" role="alert" id="thongbaofalse">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="warning size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            <div class="noidungthongbao">
+                <p style="font-weight: bold;">Lỗi</p>
+                <p>@ViewBag.thongbao</p>
+            </div>
+        </div>
+    }
+
+    <div class="all">
+        @using (Html.BeginForm("dangky", "User", method: FormMethod.Post, htmlAttributes: new { id = "formDangKy" }))
+        {
+            <h1>Đăng Ký</h1>
+            <div class="email input-box">
+                <i class='bx bxs-envelope' style='color:#ffffff'></i>
+                @Html.TextBoxFor(m => m.EMAIL, new { @placeholder = "Email", @required = "required", @class = "inputemail", maxlength = "30", id = "email" })
+            </div>
+            <div class="taikhoan input-box">
+                <i class='bx bxs-user-circle' style='color:#ffffff'></i>
+                @Html.TextBoxFor(m => m.TENDANGNHAP, new { @placeholder = "Tên Tài Khoản", @required = "required", @class = "inputtaikhoan", maxlength = "50", id = "tendangnhap" })
+            </div>
+            <div class="matkhau input-box">
+                <i class='bx bx-lock-open-alt' style='color:#ffffff'></i>
+                @Html.TextBoxFor(m => m.MATKHAU, new { @placeholder = "Mật Khẩu", @required = "required", @class = "inputmatkhau", @type = "password", maxlength = "10", id = "matkhau" })
+            </div>
+            <div class="nhaplaimatkhau input-box">
+                <i class='bx bx-lock-open-alt' style='color:#ffffff'></i>
+                <input type="password" required placeholder="Nhập Lại Mật Khẩu" class="inputnhaplaimatkhau" name="matkhaunhaplai" maxlength="10" id="matkhaunhaplai">
+            </div>
+
+            <div class="g-recaptcha" data-sitekey="6LetciorAAAAAL5M9bw6fHwXP6ouC3T5CFljWZ0l" style="display:flex; justify-content:center; margin-top: 20px"></div>
+
+            <div class="checkbox">
+                <input type="checkbox" required>
+                <p>Tôi đã đọc và đồng ý với các <a href="#">Điều khoản dịch vụ</a></p>
+            </div>
+            <div class="dangky">
+                <button type="submit">ĐĂNG KÝ</button>
+            </div>
+        }
+    </div>
+
+    <script src="~/Scripts/chongxss.js"></script>
+</body>
+</html>

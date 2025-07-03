@@ -1,0 +1,104 @@
+﻿@model WEBDOGO.Models.VANCHUYEN
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sản Phẩm Theo Yêu Cầu</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/chitietquanlyyeucau.css")?v=@DateTime.Now.Ticks">
+</head>
+<body>
+    <div class="container">
+        <h2>Chỉnh sửa vận chuyển</h2>
+        @using (Html.BeginForm("vanchuyencuatoi", "Nhanvienvanchuyen", FormMethod.Post))
+        {
+            <div class="form-row">
+                <!-- Cột 1 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="MAVANCHUYEN">Mã vận chuyển:</label>
+                        @Html.TextBoxFor(m => m.MAVANCHUYEN, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYBATDAUGUI">Ngày bắt đầu gửi:</label>
+                        @Html.TextBoxFor(m => m.NGAYBATDAUGUI, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYDUKIENDUOCGIAO">Ngày dự kiến được giao :</label>
+                        @Html.TextBoxFor(m => m.NGAYDUKIENDUOCGIAO, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PHUONGTHUCVANCHUYEN">Phương thức vận chuyện:</label>
+                        @Html.TextBoxFor(m => m.PHUONGTHUCVANCHUYEN, new { @readonly = "readonly" })
+                    </div>
+
+                </div>
+
+                <!-- Cột 2 -->
+                <div class="form-column">
+
+                    <div class="form-group">
+                        <label for="CHIPHIVANCHUYEN">Chi phí vận chuyển:</label>
+                        @Html.TextBoxFor(m => m.CHIPHIVANCHUYEN, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="MOTA">Mô tả:</label>
+                        @Html.TextBoxFor(m => m.MOTA, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TRANGTHAIVANCHUYEN">Trạng thái vận chuyển:</label>
+                        @Html.TextBoxFor(m => m.TRANGTHAIVANCHUYEN, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Ngaygiaothucte">Ngày giao thực tế:</label>
+                        @Html.TextBoxFor(m => m.NGAYGIAOTHUCTE, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="manhanvienvc">manhanvienvc:</label>
+                        @Html.TextBoxFor(m => m.MANHANVIENVANCHUYEN, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="mcthd">Mcthd:</label>
+                        @Html.TextBoxFor(m => m.MACHITIETHOADON, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="msptyc">msptyc:</label>
+                        @Html.TextBoxFor(m => m.MASANPHAMTHEOYEUCAU, new { @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Nút Lưu -->
+            if (Model.TRANGTHAIVANCHUYEN == "Đang giao đến")
+            {
+                <div class="form-group full-width">
+                    <a href="@Url.Action("vanchuyenthanhcong","Nhanvienvanchuyen", new { vc = Model.MAVANCHUYEN })" class="btn-save" style="margin-bottom: 20px; background-color: green; width: 80%">Hoàn thành</a>
+                    <a href="@Url.Action("vanchuyenthatbai", "Nhanvienvanchuyen", new {vc = Model.MAVANCHUYEN})" style="margin-bottom: 20px; background-color: darkred; width: 80%" class="btn-save">Thất bại</a>
+                </div>
+            }
+            else if (Model.TRANGTHAIVANCHUYEN == "Hoàn thành" || Model.TRANGTHAIVANCHUYEN == "Hoàn hàng")
+            {
+                <button type="submit" class="btn-save" style="margin-bottom: 20px; background-color: green">Quay lại</button>
+            }
+            else
+            {
+                <div class="form-group full-width">
+                    <button type="submit" class="btn-save">Đến giai đoạn tiếp theo</button>
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>

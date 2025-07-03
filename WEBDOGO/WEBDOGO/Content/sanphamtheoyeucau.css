@@ -1,0 +1,324 @@
+/* Định dạng toàn bộ trang */
+body {
+    font-family: 'Poppins', sans-serif; /* Phông chữ hiện đại */
+    background-color: #f2f2f2; /* Màu nền nhẹ nhàng */
+    color: #333; /* Màu chữ tối */
+    line-height: 1.6; /* Khoảng cách giữa các dòng */
+    margin: 0;
+    height: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ với màu đen và độ trong suốt */
+    z-index: 1; /* Đảm bảo lớp này nằm phía dưới div cần hiển thị */
+    display: none;
+}
+
+/* Định dạng cho container */
+.allsanphamtheoyeucau {
+    margin: 50px auto; /* Căn giữa */
+    padding: 30px; /* Padding cho container */
+    background: linear-gradient(to bottom right, #ffffff, #e9ecef); /* Gradient nền */
+    border-radius: 12px; /* Bo góc cho container */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Đổ bóng đậm hơn */
+}
+
+/* Định dạng cho phần form */
+.allsanphamtheoyeucau .form-container {
+    padding: 20px; /* Padding cho form */
+}
+
+/* Định dạng tiêu đề */
+.allsanphamtheoyeucau .form-container h2 {
+    text-align: center; /* Căn giữa tiêu đề */
+    margin-bottom: 30px; /* Khoảng cách dưới tiêu đề */
+    font-size: 32px; /* Kích thước chữ lớn */
+    color: #007bff; /* Màu chữ tiêu đề */
+    text-transform: uppercase; /* Chữ in hoa */
+    letter-spacing: 2px; /* Khoảng cách giữa các chữ */
+}
+
+/* Định dạng cho các hàng trong form */
+.allsanphamtheoyeucau .form-row {
+    display: flex; /* Sử dụng Flexbox để căn chỉnh */
+    justify-content: space-between; /* Căn đều khoảng cách giữa các trường */
+    margin-bottom: 20px; /* Khoảng cách giữa các hàng */
+}
+
+/* Định dạng cho các nhóm form */
+.allsanphamtheoyeucau .form-group {
+    flex: 1; /* Chiếm đều không gian */
+    margin-right: 15px; /* Khoảng cách bên phải */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hiệu ứng chuyển động */
+}
+
+.allsanphamtheoyeucau .form-group:last-child {
+    margin-right: 0; /* Không có khoảng cách bên phải cho nhóm cuối */
+}
+
+/* Định dạng cho các nhãn */
+.allsanphamtheoyeucau label {
+    font-weight: bold; /* In đậm nhãn */
+    display: block; /* Đặt nhãn trên cùng */
+    margin-bottom: 10px; /* Khoảng cách dưới nhãn */
+    font-size: 16px; /* Kích thước chữ nhãn */
+    color: #555; /* Màu chữ nhãn */
+}
+
+/* Định dạng cho các trường nhập liệu */
+.allsanphamtheoyeucau input[type="number"],
+.allsanphamtheoyeucau input[type="text"],
+.allsanphamtheoyeucau textarea,
+.allsanphamtheoyeucau select {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    padding: 12px; /* Padding trong trường */
+    border: 1px solid #ced4da; /* Viền */
+    border-radius: 6px; /* Bo góc */
+    font-size: 14px; /* Kích thước chữ trong trường */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển tiếp cho viền */
+}
+
+/* Hiệu ứng khi trường được chọn */
+.allsanphamtheoyeucau input[type="number"]:focus,
+.allsanphamtheoyeucau input[type="text"]:focus,
+.allsanphamtheoyeucau textarea:focus,
+.allsanphamtheoyeucau select:focus {
+    border-color: #007bff; /* Màu viền khi có focus */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Đổ bóng nhẹ khi focus */
+    outline: none; /* Không có viền ngoài */
+}
+
+/* Định dạng cho nút gửi */
+.allsanphamtheoyeucau button[type="submit"] {
+    background-color: #007bff; /* Màu nền nút */
+    color: #ffffff; /* Màu chữ */
+    border: none; /* Không có viền */
+    border-radius: 6px; /* Bo góc */
+    padding: 12px 25px; /* Padding cho nút */
+    cursor: pointer; /* Con trỏ khi hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Hiệu ứng chuyển tiếp cho màu nền */
+    font-size: 16px; /* Kích thước chữ lớn hơn */
+    display: block; /* Căn giữa nút */
+    margin: 30px auto 0; /* Căn giữa và khoảng cách trên */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3); /* Đổ bóng cho nút */
+}
+
+/* Hiệu ứng hover cho nút gửi */
+.allsanphamtheoyeucau button[type="submit"]:hover {
+    background-color: #0056b3; /* Màu nền chuyển khi hover */
+    transform: translateY(-2px); /* Nâng nút lên khi hover */
+}
+
+/* Hiệu ứng cho mỗi nhóm form khi hover */
+.allsanphamtheoyeucau .form-group:hover {
+    transform: translateY(-2px); /* Nâng nhóm lên khi hover */
+}
+
+.table-container {
+    margin-top: 30px;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+}
+
+.table th,
+.table td {
+    text-align: center;
+}
+
+.table th {
+    background-color: #007bff; /* Màu nền tiêu đề */
+    color: white; /* Màu chữ tiêu đề */
+    border-bottom: 2px solid #0056b3; /* Viền dưới tiêu đề */
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Màu nền hàng chẵn */
+}
+
+.table tr:hover {
+    background-color: #d1e7ff; /* Màu nền khi hover */
+}
+
+.table td {
+    border-bottom: 1px solid #ddd; /* Viền dưới cho các ô dữ liệu */
+}
+
+.table td:last-child {
+    word-wrap: break-word; /* Ngắt dòng cho mô tả nếu quá dài */
+}
+
+.duyet {
+    width: 120px;
+    height: 30px;
+    background-color: green;
+    border-radius: 20px;
+    color: rgb(255, 254, 210);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vanchuyen {
+    width: 150px;
+    height: 30px;
+    background-color: green;
+    border-radius: 20px;
+    color: rgb(255, 254, 210);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.vanchuyen:hover {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+}
+
+
+.vanchuyen:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.tiendosanxuat {
+    width: 150px;
+    height: 30px;
+    background-color: green;
+    border-radius: 20px;
+    color: rgb(255, 254, 210);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.tiendosanxuat:hover {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.tiendosanxuat:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.chitietsanxuat {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 2; /* Đảm bảo div nằm trên lớp nền mờ */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.chitietvanchuyen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 2; /* Đảm bảo div nằm trên lớp nền mờ */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+
+.chitietvanchuyentieude button svg{
+    width: 40px;
+    color: red;
+}
+
+.chitietvanchuyentieude button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-left: 97%;
+    position: absolute;
+}
+
+.chitietvanchuyentieude {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.chitietsanxuattieude {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.chitietsanxuattieude button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-left: 97%;
+    position: absolute;
+}
+
+.chitietsanxuattieude button svg{
+    width: 40px;
+    color: red;
+}
+
+.allchapnhan {
+    display: flex;
+}
+
+.chapnhan {
+    margin-right: 20px;
+    width: 60px;
+    height: 30px;
+    background-color: green;
+    border-radius: 20px;
+    color: rgb(255, 254, 210);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.khongchapnhan {
+    margin-right: 20px;
+    width: 60px;
+    height: 30px;
+    background-color: darkred;
+    border-radius: 20px;
+    color: rgb(255, 254, 210);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}

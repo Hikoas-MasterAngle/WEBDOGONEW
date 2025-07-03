@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "chapnhandonhang";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+    var kh = (WEBDOGO.Models.KHACHHANG)Session["taikhoan"];
+}
+
+@section Styles {
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/hoadon.css")?v=@DateTime.Now.Ticks">
+}
+
+<div class="container" style="text-align: center">
+    <img src="https://qr.ecaptcha.vn/api/generate/Mb/0919891335/NGUYEN%20THE%20VINH?amount=@Url.Encode(@ViewBag.hoadon.TONGTIEN.ToString())&memo=@Url.Encode(@ViewBag.hoadon.SOHOADON)&is_mask=0&bg=7" alt="Mã QR" class="qr-code" style="width: 500px">
+    <div style="margin-top: 60px; margin-bottom: 60px">
+        <p style="font-size: 20px">Ngân hàng : BIDV</p>
+        <p style="font-size: 20px">STK: 6505178575</p>
+        <p style="font-size: 20px">TRAN QUANG DUNG</p>
+        <p style="font-size: 20px">Nội dung chuyển khoản : @ViewBag.hoadon.SOHOADON</p>
+    </div>
+</div>
+
+<section>
+    <div class="invoice">
+        <div class="invoice_info">
+            <div class="i_row">
+                <div class="i_logo">
+                    <h1>ĐỒ GỖ NỘI THẤT</h1>
+                </div>
+                <div class="title">
+                    <h1>HÓA ĐƠN</h1>
+                </div>
+            </div>
+            <div class="i_row">
+                <div class="i_to">
+                    <div class="main_title">
+                        <p>Thông tin khách hàng</p>
+                    </div>
+                    <div class="p_title">
+                        <p>@kh.HOVATEN</p>
+                    </div>
+                    <div class="p_title">
+                    </div>
+                </div>
+                <div class="i_details text_right">
+                    <div class="p_title">
+                        <p>Số hóa đơn:</p>
+                        <span id="mahoadon">@ViewBag.hoadon.SOHOADON</span> <!-- MAHOADON -->
+                    </div>
+                    <div class="p_title">
+                        <p>Ngày lập hóa đơn:</p>
+                        <span id="ngayhoadon">@ViewBag.hoadon.NGAYLAP</span>
+                    </div>
+                    <div class="p_title">
+                        <p>Trạng thái hóa đơn:</p>
+                        <span id="trangthaihoadon"><h3>@ViewBag.hoadon.TRANGTHAITHANHTOAN</h3></span> <!-- Trạng thái đơn hàng -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="invoice_table">
+            <div class="i_table">
+                <div class="i_table_head">
+                    <div class="i_row">
+                        <div class="i_col w_55">
+                            <p class="p_title">MÃ SẢN PHẨM</p> <!-- MASANPHAMTHEOYEUCAU -->
+                        </div>
+                        <div class="i_col w_15 text_center">
+                            <p class="p_title">SỐ LƯỢNG</p> <!-- SOLUONG -->
+                        </div>
+                        <div class="i_col w_15 text_center">
+                            <p class="p_title">ĐƠN GIÁ</p> <!-- GIA -->
+                        </div>
+                        <div class="i_col w_15 text_right">
+                            <p class="p_title">THÀNH TIỀN</p> <!-- CALCULATED FIELD (SOLUONG * GIA) -->
+                        </div>
+                    </div>
+                </div>
+                <div class="i_table_body">
+                        <div class="i_row">
+                            <div class="i_col w_55">
+                                <span>@ViewBag.sptyc1.LOAISANPHAM</span>
+                            </div>
+                            <div class="i_col w_15 text_center">
+                                <p>@ViewBag.sptyc1.SOLUONG</p>
+                            </div>
+                            <div class="i_col w_15 text_center">
+                                <p>@ViewBag.sptyc1.TONGSOTIENSANXUAT ₫</p>
+                            </div>
+                            <div class="i_col w_15 text_right">
+                                <p>@ViewBag.hoadon.TONGTIEN ₫</p>
+                            </div>
+                        </div>
+                </div>
+                <div class="i_table_foot">
+                    <div class="i_row">
+                        <div class="i_col w_50">
+                            <p>Tổng tạm tính</p>
+                        </div>
+                        <div class="i_col w_50 text_right">
+                            <p>@ViewBag.hoadon.TONGTIEN ₫</p> <!-- Total without tax -->
+                        </div>
+                    </div>
+                    <div class="i_row grand_total_wrap">
+                        <div class="i_col w_50">
+                            <p>TỔNG CỘNG:</p>
+                        </div>
+                        <div class="i_col w_50 text_right">
+                            <p>@ViewBag.hoadon.TONGTIEN ₫</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="invoice_payment">
+            <div class="i_row">
+                <div class="i_payment">
+                    <div class="main_title">
+                        <p>Phương thức thanh toán</p>
+                    </div>
+                    <div class="p_title">
+                        <p>BIDV:</p>
+                        <span>STK: 6505178575</span>
+                    </div>
+                </div>
+                <div class="i_duetotal text_right">
+                    <div class="main_title">
+                        <p>Số tiền cần thanh toán</p>
+                    </div>
+                    <div class="p_title">
+                        <p>Số tiền bằng VND:</p>
+                        <span><h2>@ViewBag.hoadon.TONGTIEN ₫</h2></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="invoice_terms">
+            <div class="main_title">
+                <p>Điều khoản và điều kiện</p>
+            </div>
+            <p>Hàng sẽ được giao trong vòng 5-7 ngày làm việc, tính từ ngày xác nhận thanh toán. Phí giao hàng sẽ được miễn phí cho các đơn hàng trong nội thành.</p>
+        </div>
+    </div>
+</section>
+
+<div class="container lienhe" style="text-align: center">
+    <p style="font-size: 16px; font-weight: bold">Sau khi chuyển khoản thành công hãy liên hệ cho nhân viên để có thể xử lý hóa đơn của bạn</p>
+    <div>
+        <button class="buttonlienhedathang" onclick="location.href='@Url.Action("sepay1", "User", new { mahd = ViewBag.hoadon.MAHOADON })'">Xác nhận đã thanh toán</button>
+    </div>
+</div>
+

@@ -1,0 +1,142 @@
+/* Reset some basic elements */
+  
+.fullbody {
+    width: 60%;
+    margin: 5% auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(70, 70, 70, 0.603);
+    border-radius: 10px;
+  }
+  
+  .Titleinf h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+.Titleinf {
+    border-bottom: 1px solid black;
+    margin-bottom: 50px;
+}
+
+.capnhapthongtin {
+    display: flex;
+    flex-direction: column;
+}
+  
+  .maininf {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .upinf {
+    flex: 1;
+  }
+  
+  .upinf p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .upinf input {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .upinf input[readonly] {
+    background-color: #e9ecef;
+  }
+  .choseimg {
+    display: flex;
+    justify-content: center;
+  }
+  
+   .choseimg img {
+    width: 60%;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btnsub {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .btnsub button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btnsub button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .maininf {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .upinf {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .imginf {
+      margin-bottom: 20px;
+    }
+  }
+  .upinf p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Wrapper cho mỗi dòng p và input */
+  .upinf div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  /* Căn chỉnh các nhãn và ô input */
+  .upinf p {
+    margin-top: 2%;
+    width: 20%; /* Chiều rộng của phần tử p để căn lề */
+  }
+  
+  .upinf input {
+    width: 70%; /* Chiều rộng của input */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    margin-left: 10px; /* Khoảng cách giữa p và input */
+  }
+
+.upinf select {
+    width: 70%; /* Chiều rộng của input */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    margin-left: 10px; /* Khoảng cách giữa p và input */
+}

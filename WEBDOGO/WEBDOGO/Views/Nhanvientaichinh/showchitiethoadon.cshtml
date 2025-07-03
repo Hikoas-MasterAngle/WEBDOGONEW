@@ -1,0 +1,174 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>showchitiethoadon</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/hoadon.css")?v=@DateTime.Now.Ticks">
+</head>
+<body>
+    <script src="@Url.Content("~/Scripts/chitiethoadon.js")?v=@DateTime.Now.Ticks" defer></script>
+    <section>
+        <div class="invoice">
+            <div class="invoice_info">
+                <div class="i_row">
+                    <div class="i_logo">
+                        <h1>ĐỒ GỖ NỘI THẤT</h1>
+                    </div>
+                    <div class="title">
+                        <h1>HÓA ĐƠN</h1>
+                    </div>
+                </div>
+                <div class="i_row">
+                    <div class="i_to">
+                        <div class="main_title">
+                            <p>Thông tin khách hàng</p>
+                        </div>
+                        <div class="p_title">
+                            <p>@ViewBag.kh.tenkhachhang</p>
+                        </div>
+                        <div class="p_title">
+                            <p>@ViewBag.kh.diachi</p>
+                        </div>
+                    </div>
+                    <div class="i_details text_right">
+                        <div class="main_title">
+                            <p>Chi tiết hóa đơn</p>
+                        </div>
+                        <div class="p_title">
+                            <p>Số hóa đơn:</p>
+                            <span id="mahoadon">@ViewBag.hd.SOHOADON</span> <!-- MAHOADON -->
+                        </div>
+                        <div class="p_title">
+                            <p>Ngày lập hóa đơn:</p>
+                            <span id="ngayhoadon">@ViewBag.hd.NGAYLAP</span>
+                        </div>
+                        <div class="p_title">
+                            <p>Trạng thái hóa đơn:</p>
+                            <span id="trangthaihoadon"><h3>@ViewBag.hd.TRANGTHAITHANHTOAN</h3></span> <!-- Trạng thái đơn hàng -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="invoice_table">
+                <div class="i_table">
+                    <div class="i_table_head">
+                        <div class="i_row">
+                            <div class="i_col w_55">
+                                <p class="p_title">TÊN SẢN PHẨM</p> <!-- MASANPHAMTHEOYEUCAU -->
+                            </div>
+                            <div class="i_col w_15 text_center">
+                                <p class="p_title">SỐ LƯỢNG</p> <!-- SOLUONG -->
+                            </div>
+                            <div class="i_col w_15 text_center">
+                                <p class="p_title">ĐƠN GIÁ</p> <!-- GIA -->
+                            </div>
+                            <div class="i_col w_15 text_right">
+                                <p class="p_title">THÀNH TIỀN</p> <!-- CALCULATED FIELD (SOLUONG * GIA) -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="i_table_body">
+                        @if (ViewBag.chitiethoadon != null && ViewBag.chitiethoadon.Count > 0)
+                        {
+                            foreach (var item in ViewBag.chitiethoadon)
+                            {
+                                <div class="i_row">
+                                    <div class="i_col w_55">
+                                        <span>@item.sSANPHAM.TENSANPHAM</span>
+                                    </div>
+                                    <div class="i_col w_15 text_center">
+                                        <p>@item.sCHITIETHOADON.SOLUONG</p>
+                                    </div>
+                                    <div class="i_col w_15 text_center">
+                                        <p>@item.sSANPHAM.GIASANPHAM ₫</p>
+                                    </div>
+                                    <div class="i_col w_15 text_right">
+                                        <p>@item.sCHITIETHOADON.TONGTIEN ₫</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            foreach (var item in ViewBag.chitiethoadonsptheoyecau)
+                            {
+                                <div class="i_row">
+                                    <div class="i_col w_55">
+                                        <span>@item.sANPHAMTHEOYEUCAU.LOAISANPHAM</span>
+                                    </div>
+                                    <div class="i_col w_15 text_center">
+                                        <p>@item.sANPHAMTHEOYEUCAU.SOLUONG</p>
+                                    </div>
+                                    <div class="i_col w_15 text_center">
+                                        <p>@item.sANPHAMTHEOYEUCAU.TONGSOTIENSANXUAT ₫</p>
+                                    </div>
+                                    <div class="i_col w_15 text_right">
+                                        <p>@item.hOADON.TONGTIEN ₫</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="i_table_foot">
+                        <div class="i_row">
+                            <div class="i_col w_50">
+                                <p>Tổng tạm tính</p>
+                            </div>
+                            <div class="i_col w_50 text_right">
+                                <p>@ViewBag.hd.TONGTIEN ₫</p> <!-- Total without tax -->
+                            </div>
+                        </div>
+                        <div class="i_row grand_total_wrap">
+                            <div class="i_col w_50">
+                                <p>TỔNG CỘNG:</p>
+                            </div>
+                            <div class="i_col w_50 text_right">
+                                <p>@ViewBag.hd.TONGTIEN ₫</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="invoice_payment">
+                <div class="i_row">
+                    <div class="i_payment">
+                        <div class="main_title">
+                            <p>Phương thức thanh toán</p>
+                        </div>
+                        <div class="p_title">
+                            <p>BIDV:</p>
+                            <span>STK: 6505178575</span>
+                        </div>
+                    </div>
+                    <div class="i_duetotal text_right">
+                        <div class="main_title">
+                            <p>Số tiền cần thanh toán</p>
+                        </div>
+                        <div class="p_title">
+                            <p>Số tiền bằng VND:</p>
+                            <span><h2>@ViewBag.hd.TONGTIEN ₫</h2></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="invoice_terms">
+                <div class="main_title">
+                    <p>Điều khoản và điều kiện</p>
+                </div>
+                <p>Hàng sẽ được giao trong vòng 5-7 ngày làm việc, tính từ ngày xác nhận thanh toán. Phí giao hàng sẽ được miễn phí cho các đơn hàng trong nội thành.</p>
+                <button style="padding: 10px; border-radius: 5px; cursor: pointer;" onclick="location.href='@Url.Action("chinhsuachitiethoadon", "Nhanvientaichinh", new {mahd = @ViewBag.hd.MAHOADON})'">Chỉnh sửa hóa đơn</button>
+                <button style="padding: 10px; border-radius: 5px; cursor: pointer;" onclick="location.href='@Url.Action("showgiaodienquanly", "Nhanvientaichinh")'">Trở về</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

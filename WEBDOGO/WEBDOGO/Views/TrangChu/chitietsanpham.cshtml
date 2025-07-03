@@ -1,0 +1,249 @@
+﻿@model WEBDOGO.Models.allclass_and_oneclass
+
+@{
+    ViewBag.Title = "chitietsanpham";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+    string anhsanpham = Model.onesanpham.ANHSANPHAM;
+    string newanhsanpham = anhsanpham.Replace("../IMG", "~/IMG");
+    int giasanphamInt = int.Parse(Model.onesanpham.GIASANPHAM.Replace(",", ""));
+}
+
+@section Styles {
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/sanphamcon.css")?v=@DateTime.Now.Ticks">
+}
+@if (TempData["thongbaothemthanhcong"] != null && TempData["thongbaothemthanhcong"] == "Thêm sản phẩm vào giỏ hàng thành công")
+{
+    <div class="alert-success alert-primary" role="alert" id="thongbaothanhcong">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="success size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        <div class="noidungthongbao">
+            <p style="font-weight: bold;">THÀNH CÔNG</p>
+            <p>@TempData["thongbaothemthanhcong"]</p>
+        </div>
+    </div>
+}
+
+<!--body 1-->
+<div class="sanphamcon">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 sanphambentrai">
+                <div class="sanphambentraitren">
+                    <p class="danhmucsanpham">
+                        DANH MỤC SẢN PHẨM
+                    </p>
+                    <div class="sanphambentraitrencon">
+                        <a href="#">Sản Phẩm Đặc Biệt</a>
+                        <a href="#">Quà Tặng</a>
+                        <a href="#">Lục Bình Gỗ</a>
+                        <a href="#">Bình Hoa Gỗ</a>
+                        <a href="#">Đồ Thờ</a>
+                        <a href="#">Cửa Gỗ</a>
+                        <a href="#">Giường Gỗ</a>
+                        <a href="#">Kệ Tủ Gỗ</a>
+                        <a href="#" style="margin-bottom: 30px;">Tủ Quần Áo Gỗ</a>
+                    </div>
+                </div>
+
+                <div class="sanphambentraiduoi">
+                    <p class="tieudesanphambentraiduoi">
+                        Sản Phẩm
+                    </p>
+                    <div class="sanphambentraiduoicon">
+                        @for (int i = 0; i < Model.sanphamlist.Count(); i++)
+                        {
+                            if (i > 4)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                string anhnhiusanpham = Model.sanphamlist.ElementAt(i).ANHSANPHAM;
+                                string newanhnhiusanpham = anhnhiusanpham.Replace("../IMG", "/IMG");
+                                <div class="sanphambentraiduoicon-con">
+                                    <div>
+                                        <a href="@Url.Action("chitietsanpham", "Sanpham" , new {id = Model.sanphamlist.ElementAt(i).MASANPHAM})"><img src="@ViewBag.ServerName/@newanhnhiusanpham" alt=""></a>
+                                    </div>
+                                    <div class="sanpham-noidungconcuasanpham">
+                                        <a href="#">
+                                            <p class="tensanphambentrai">@Model.sanphamlist.ElementAt(i).TENSANPHAM</p>
+                                            <p class="giasanphambentrai">@Model.sanphamlist.ElementAt(i).GIASANPHAM đ</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            <!--Nội dung bên phải-->
+            <div class="col-xl-9">
+                <div class="sanphamconbenphai">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img src="@ViewBag.ServerName/@anhsanpham" alt=""></div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 thongtinsanpham">
+                            @if (Session["taikhoan"] != null)
+                            {
+                                <form action="@Url.Action("themvaogiohang", "User")" method="post">
+                                    <div class="namtrongthongtinsanpham">
+                                        <div class="tensanpham">
+                                            <h1>
+                                                @Model.onesanpham.TENSANPHAM
+                                            </h1>
+                                        </div>
+                                        <div class="giasanpham">
+                                            <p>@Model.onesanpham.GIASANPHAM</p>
+                                        </div>
+                                        <div class="mota">
+                                            <p>THÔNG TIN SẢN PHẨM:</p>
+                                            <ul>
+                                                <li>Kích thước : dài @Model.onesanpham.CHIEUDAI cm, rộng @Model.onesanpham.CHIEURONG cm, cao @Model.onesanpham.CHIEUCAO cm</li>
+                                                <li>Chất liệu : @Model.onesanpham.CHATLIEU</li>
+                                                <li>Tình trạng : Có sẵn tại showroom</li>
+                                            </ul>
+                                        </div>
+                                        <div class="themgiamsanpham-themgiohang">
+                                            <button class="giam" id="giam" type="button">
+                                                <!-- Giảm -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                                                </svg>
+                                            </button>
+
+                                            <input type="text" class="textthemsoluong" id="textthemsoluong" name="soluong" value="1">
+
+                                            <button class="them" id="them" type="button">
+                                                <!-- Thêm -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                                </svg>
+                                            </button>
+
+                                            @if (Session["taikhoan"] != null)
+                                            {
+                                                var khachhang = (WEBDOGO.Models.KHACHHANG)Session["taikhoan"];
+                                                <input type="hidden" name="idkh" value="@khachhang.MAKHACHHANG" />
+                                                <input type="hidden" name="idsanpham" value="@Model.onesanpham.MASANPHAM" />
+                                                <input type="hidden" name="giasanpham" value="@giasanphamInt" />
+                                                <input type="hidden" name="ngaythem" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")" />
+                                            }
+                                            <button class="nutthemgiohang" id="nutthemgiohang" type="submit">THÊM VÀO GIỎ</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            }
+                            else
+                            {
+                                using (Html.BeginForm("themsanphamvaogiohangnologin", "TrangChu", FormMethod.Post))
+                                {
+                                    <div class="namtrongthongtinsanpham">
+                                        <input type="text" name="masanpham" value="@Model.onesanpham.MASANPHAM" hidden>
+                                        <div class="tensanpham">
+                                            <h1>
+                                                @Model.onesanpham.TENSANPHAM
+                                            </h1>
+                                        </div>
+                                        <div class="giasanpham">
+                                            <p>@Model.onesanpham.GIASANPHAM</p>
+                                        </div>
+                                        <div class="mota">
+                                            <p>THÔNG TIN SẢN PHẨM:</p>
+                                            <ul>
+                                                <li>Kích thước : dài @Model.onesanpham.CHIEUDAI cm, rộng @Model.onesanpham.CHIEURONG cm, cao @Model.onesanpham.CHIEUCAO cm</li>
+                                                <li>Chất liệu : @Model.onesanpham.CHATLIEU</li>
+                                                <li>Tình trạng : Có sẵn tại showroom</li>
+                                            </ul>
+                                        </div>
+                                        <div class="themgiamsanpham-themgiohang">
+                                            <button class="giam" id="giam" type="button">
+                                                <!-- Giảm -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                                                </svg>
+                                            </button>
+                                            <input type="text" class="textthemsoluong" id="textthemsoluong" name="soluong" value="1">
+
+                                            <button class="them" id="them" type="button">
+                                                <!-- Thêm -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-4">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                                </svg>
+                                            </button>
+                                            <button class="nutthemgiohang" id="nutthemgiohang" type="submit">THÊM VÀO GIỎ</button>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 allnoidung">
+                            <div class="tieudemota">
+                                <p>Mô Tả</p>
+                            </div>
+                            <div class="noidungmota" id="noidungmota">
+                                @Model.onesanpham.MOTASANPHAM
+                            </div>
+                        </div>
+                        <div class="col-xl-12 allsanphamtuongtu">
+                            <div class="tieudesanphamtuongtu">
+                                SẢN PHẨM TƯƠNG TỰ
+                            </div>
+                            <div class="sanphamtuongtucon">
+                                @for (int i = 0; i < Model.sanphamlist.Count(); i++)
+                                {
+                                    if (i > 4)
+                                    {
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        string anhnhiusanpham = Model.sanphamlist.ElementAt(i).ANHSANPHAM;
+                                        string newanhnhiusanpham = anhnhiusanpham.Replace("../IMG", "/IMG");
+                                        <div class="thanhphansanphamtuongtu">
+                                            <a href="@Url.Action("chitietsanpham", "Sanpham" , new {id = Model.sanphamlist.ElementAt(i).MASANPHAM})">
+                                                <img src="@ViewBag.ServerName/@newanhnhiusanpham" alt="">
+                                                <p class="tensaphamtuongtu">@Model.sanphamlist.ElementAt(i).TENSANPHAM</p>
+                                                <p class="giasanphamtuongtu">@Model.sanphamlist.ElementAt(i).GIASANPHAM ₫</p>
+                                            </a>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const congsoluong = document.getElementById('them');
+    const giamsoluong = document.getElementById('giam');
+    const textthemsoluong = document.getElementById('textthemsoluong');
+    var soluong = 1;
+
+    congsoluong.onclick = function () {
+        soluong++;
+        textthemsoluong.value = soluong;
+    }
+
+    giamsoluong.onclick = function () {
+        if (soluong > 1) {
+            soluong--;
+        }
+        textthemsoluong.value = soluong;
+    }
+</script>

@@ -1,0 +1,262 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecef;
+}
+
+.container1 {
+    position: relative;
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #495057;
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.main-content h1 {
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #343a40;
+}
+
+.content-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.content-section h2 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.content-section p {
+    color: #6c757d;
+}
+
+.tacvu  svg{
+    width: 40px;
+}
+
+.tacvu .xoanguoidung svg{
+    margin-left: 20px;
+    color: red;
+}
+
+.table tbody tr {
+      border-bottom: 1px solid rgb(202, 202, 202);
+}
+
+.thongtinchitiet {
+    z-index: 999;
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    width: 500px;
+    display: none;
+}
+
+.thongtinchitiet {
+    border: 1px solid #007bff; /* Đường viền cho toàn bộ khối thông tin */
+    border-radius: 5px; /* Bo góc */
+    padding: 20px; /* Khoảng cách bên trong */
+    background-color: #f8f9fa; /* Màu nền */
+    margin: 20px 0; /* Khoảng cách phía trên và dưới */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+}
+
+.btnluu {
+    margin-top: 20px;
+    float: right;
+    margin-right: 20px;
+}
+
+.thongtinchitiet h5 {
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+}
+
+.thongtinchitiet p {
+    margin: 10px 0; /* Khoảng cách giữa các thẻ p */
+}
+
+.thongtinchitiet input {
+    width: calc(100% - 20px); /* Chiều rộng của input */
+    padding: 8px; /* Khoảng cách bên trong */
+    border: 1px solid #007bff; /* Đường viền */
+    border-radius: 5px; /* Bo góc */
+    font-size: 16px; /* Kích thước chữ */
+    color: #333; /* Màu chữ */
+    background-color: #ffffff; /* Màu nền trắng cho input */
+}
+
+.thongtinchitiet input[readonly] {
+    background-color: #e9ecef; /* Màu nền cho input không sửa đổi */
+    cursor: not-allowed; /* Con trỏ khi không cho phép sửa đổi */
+}
+
+.close-button {
+    background-color: transparent; /* Nền trong suốt */
+    border: none; /* Không có đường viền */
+    color: #dc3545; /* Màu đỏ cho nút đóng */
+    position: absolute; /* Đặt vị trí tuyệt */
+    right: 30px;
+    cursor: pointer;
+}
+
+.close-button:focus {
+    outline: none;
+}
+
+.close-button svg {
+    width: 30px;
+}
+
+.nutthongtinchitiet svg {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.themnguoi svg {
+    width: 35px;
+    color: #ffffff;
+}
+
+.themnguoi {
+    display: flex;
+    margin-top: -5px;
+    align-items: center;
+    color: #fcfcfc;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    right: 0px;
+    border-radius: 10px;
+    margin-right: 4%;
+    border: none;
+    background-color: #4EB333;
+    padding: 5px 15px;
+}
+
+
+.tieudequanly {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+
+.button-29 {
+    width: 200px;
+    align-items: center;
+    appearance: none;
+    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+    position: fixed; /* Giữ vị trí cố định */
+    bottom: 0; /* Canh phía dưới màn hình */
+    margin-bottom: 20px;
+    z-index: 9999;
+}
+
+    .button-29:focus {
+        box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    }
+
+    .button-29:hover {
+        box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+        transform: translateY(-2px);
+    }
+
+    .button-29:active {
+        box-shadow: #3c4fe0 0 3px 7px inset;
+        transform: translateY(2px);
+    }
+
+.xanhlucnhat {
+    background: linear-gradient(to left, transparent, #12ffa7, transparent);
+}
+
+.Xanhlam {
+    background: linear-gradient(to left, transparent, #83ceff, transparent);
+}
+
+.mauvang {
+    background: linear-gradient(to left,transparent, #ff883a, transparent);
+}
+
+.camnhat {
+    background: linear-gradient(to left,transparent , #ffab91, transparent);
+}
+
+.mauxanhladam {
+    background: linear-gradient(to left, transparent, #66fff063, transparent);
+}
+
+.maunhenhang {
+    background: linear-gradient(to left, transparent , #efff52, transparent);
+}

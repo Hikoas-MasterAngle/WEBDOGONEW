@@ -1,0 +1,225 @@
+/* Body Pay */
+
+.bodypay{
+    
+    display: flex;
+    flex-direction: column;
+    margin: 100px;
+    margin-left: 200px;
+    width: 80%;
+}
+.address{
+    background-color: rgb(250, 248, 246);
+    margin-bottom: 100px; 
+    display: flex; 
+    flex-direction: column;
+    border-bottom-style: groove;
+    margin: 10px;
+
+}
+.titleaddress{
+    display: flex;
+    margin: 20px;
+}
+.infaddress{
+    display: flex;
+    margin: 20px;
+}
+.namephone{
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.mainadd{
+    font-size: 20px;
+}
+.titlecheckout{
+    background-color: rgb(250, 248, 246);
+    padding:  20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.maincheckout{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.tablecheckout{
+    background-color: rgb(250, 248, 246);
+    font-size: 20px;
+    padding-bottom: 60px;
+    margin-bottom: 40px;
+    border-bottom-style:ridge;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+
+}
+table{
+    margin-bottom: 50px;
+}
+td{
+    padding-left:  20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+th{
+    padding-left:  20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+.sanpham{
+    background-color: #9D9D9D;
+}
+tr:nth-child(even) td {
+    background-color: #f7f2f2;
+}
+tr:nth-child(odd) td {
+    background-color: #ffffff;
+}
+td>img{
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s;
+}
+td>img:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+td>p{
+    text-align: center;
+}
+.note{
+    float: left;
+    border-style: groove;
+    width: 50%;
+    height: 200px;
+}
+.note>div{
+    margin: 20px;
+}
+.note>div>p{
+    float: left;
+    margin-right: 20px;
+}
+.note>div>textarea{
+    width: 80%;
+    height: 150px;
+}
+.shipping{
+    display: flex;
+    flex-direction: column;
+    float: right;
+    border-style: groove;
+    width: 50%;
+    height: 200px;
+
+}
+.infshipping{
+    font-size: 30px;
+    margin: 20px;
+    border-bottom-style:ridge;
+
+}
+.infshipping>img{
+    width: 40px;
+    margin-right: 20px;
+}
+.infshipping>p{
+    float: right;
+    margin-left: 40%;
+    font-size: 20px;
+}
+.rule{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    border-bottom-style:ridge;
+}
+.rule>a>img{
+    width: 20px;
+    margin-bottom: 20px;
+    float: left
+}
+.rule>a>img:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); ;
+}
+.rule>a>p{
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    color: #292929;
+}
+.rule>a>p:hover{
+    color:#33C9DB;
+}
+.count{
+   text-align: right;
+   margin-bottom: 20px;
+   font-size: 20px;
+}
+.count>p{
+    float: right;
+    margin-right: 20px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.pay{
+    background-color: rgb(250, 248, 246);
+}
+
+.payhow{
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom-style: ridge;
+}
+.payhow>h1{
+    float: left;
+}
+.payhow>button{
+    float: right;
+    width: 200px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #ffffff;
+}
+.payhow>button:hover{
+    background-color: rgb(199, 196, 194);
+    cursor: pointer;
+}
+.infpay{
+    padding-bottom: 30px;
+    border-bottom-style: ridge;
+    text-align: center;
+}
+.countpay{
+    float:left;
+    border-right-style: ridge;
+    width: 50%;
+}
+.btnpay{
+    float: right;
+    font-size: 30px;
+    margin-top: 100px;
+    margin-right: 200px;
+}
+.btnpay>button{
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+}
+.btnpay>button:hover{
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.danhsachthanhtoan {
+    border-radius: 20px;
+    margin-left: 20px;
+    padding: 10px;
+}

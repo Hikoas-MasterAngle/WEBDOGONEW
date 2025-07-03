@@ -1,0 +1,349 @@
+﻿@{
+    Layout = null;
+    var nvsx = (WEBDOGO.Models.NHANVIENSANXUAT)Session["taikhoan"];
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao diện Admin</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/quanly.css")?v=@DateTime.Now.Ticks">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Các Script của Bootstrap và jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <style>
+        .button-29 {
+            width: 200px;
+            align-items: center;
+            appearance: none;
+            background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+            border: 0;
+            border-radius: 6px;
+            box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            display: inline-flex;
+            font-family: "JetBrains Mono",monospace;
+            height: 48px;
+            justify-content: center;
+            line-height: 1;
+            list-style: none;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            position: relative;
+            text-align: left;
+            text-decoration: none;
+            transition: box-shadow .15s,transform .15s;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            will-change: box-shadow,transform;
+            font-size: 18px;
+            position: fixed; /* Giữ vị trí cố định */
+            bottom: 0; /* Canh phía dưới màn hình */
+            margin-bottom: 20px;
+            z-index: 9999;
+        }
+
+            .button-29:focus {
+                box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+            }
+
+            .button-29:hover {
+                box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+                transform: translateY(-2px);
+            }
+
+            .button-29:active {
+                box-shadow: #3c4fe0 0 3px 7px inset;
+                transform: translateY(2px);
+            }
+    </style>
+
+    <div class="container1">
+        <!-- Thanh Sidebar -->
+        <aside class="sidebar">
+            <h2>Nhân viên sản xuất</h2>
+            <ul>
+                @if (nvsx.VAITRO != "Nhân viên")
+                {
+                    <li><a href="#" onclick="showSection('quanlyyeucau')">Quản lý yêu cầu sản xuất</a></li>
+                    <li><a href="#" onclick="showSection('quanlytiendo')">Quản lý tiến độ sản xuất</a></li>
+                }
+                else
+                {
+
+                }
+                <li><a href="#" onclick="showSection('tiendocuatoi')">Tiến độ sản xuất của tôi</a></li>
+
+                <button class="button-29" role="button" onclick="location.href='@Url.Action("dangxuat","Dangxuat")'">Đăng xuất</button>
+            </ul>
+        </aside>
+
+        <!-- Nội dung chính -->
+        <main class="main-content">
+            <h1>Chào mừng đến với Giao diện quản lý của nhân viên sản xuất</h1>
+
+            <!-- Quản lý sản phẩm theo yêu cầu -->
+            <div id="quanlyyeucau" class="content-section" style="display: none;">
+                <h2 style="color: mediumturquoise">Quản lý sản phẩm theo yêu cầu</h2>
+                <!-- Nội dung quản lý sản phẩm theo yêu cầu -->
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" style="width: 100px;">Mã yêu cầu</th>
+                            <th scope="col" style="width: 200px;">Tên khách hàng</th>
+                            <th scope="col" style="width: 200px;">Ảnh minh họa</th>
+                            <th scope="col" style="width: 80px;">Chiều dài</th>
+                            <th scope="col" style="width: 80px;">Chiều rộng</th>
+                            <th scope="col" style="width: 80px;">Chiều cao</th>
+                            <th scope="col" style="width: 150px;">Vật Liệu</th>
+                            <th scope="col" style="width: 300px;">Mô tả</th>
+                            <th scope="col" style="width: 50px;">Tác vụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.SanPhamKhachHangList)
+                        {
+                            <tr>
+                                <td>@item.SanPham.MASANPHAMTHEOYEUCAU</td>
+                                <td>@item.TenKhachHang</td>
+                                <td><img src="@item.SanPham.ANHMINHHOA" style="width: 150px" /></td>
+                                <td>@item.SanPham.CHIEUDAI</td>
+                                <td>@item.SanPham.CHIEURONG</td>
+                                <td>@item.SanPham.CHIEUCAO</td>
+                                <td>@item.SanPham.VATLIEU</td>
+                                <td>@item.SanPham.MOTASANPHAM</td>
+                                <td class="tacvu">
+                                    <a class="nutthongtinchitiet" href="@Url.Action("showchitietyeucausanxuat", "Nhanviensanxuat", new { masansp = item.SanPham.MASANPHAMTHEOYEUCAU, tenkh = item.TenKhachHang, idkh = item.idkhachhang })">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!-- Quản lý tiến độ sản xuất -->
+            @if (nvsx.VAITRO != "Nhân viên")
+            {
+                <div id="quanlytiendo" class="content-section" style="display: none;">
+                    <h2>Quản lý tiến độ sản xuất</h2>
+                    <!-- Nội dung quản lý tiến độ sản xuất -->
+                    <h1 style="color: mediumturquoise">Sản phẩm chưa hoàn thành</h1>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" style="width: 100px;">Mã tiến độ</th>
+                                <th scope="col" style="width: 150px;">Tên khách hàng</th>
+                                <th scope="col" style="width: 150px;">Tên nhân viên</th>
+                                <th scope="col" style="width: 150px;">Ngày sản xuất</th>
+                                <th scope="col" style="width: 150px;">Ngày dự kiến hoàn thành</th>
+                                <th scope="col" style="width: 150px;">Ngày hoàn thành</th>
+                                <th scope="col" style="width: 150px;">Giai đoạn sản xuất</th>
+                                <th scope="col" style="width: 200px;">Mô tả</th>
+                                <th scope="col" style="width: 50px;">Số lượng</th>
+                                <th scope="col" style="width: 100px;">Tác vụ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.tiendo)
+                            {
+
+                                var classColor = "xanhnhat";
+                                switch (@item.sTIENDOSANXUAT.GIAIDOANSANXUAT)
+                                {
+                                    case "Lập kế hoạch và thiết kế":
+                                        classColor = "maunhenhang";
+                                        break;
+                                    case "Xử lý nguyên liệu":
+                                        classColor = "xanhlucnhat";
+                                        break;
+                                    case "Gia công sản phẩm":
+                                        classColor = "Xanhlam";
+                                        break;
+                                    case "Xử lý bề mặt":
+                                        classColor = "mauvang";
+                                        break;
+                                    case "Lắp ráp":
+                                        classColor = "camnhat";
+                                        break;
+                                    case "Hoàn thiện":
+                                        classColor = "mauxanhladam";
+                                        break;
+                                }
+                                <tr class="@classColor">
+                                    <td>@item.sTIENDOSANXUAT.MATIENDOSANXUAT</td>
+                                    <td>@item.tenkhachhang</td>
+                                    <td>@item.tennhanviensanxuat</td>
+                                    <td>@item.sTIENDOSANXUAT.NGAYSANXUAT</td>
+                                    <td>@item.sTIENDOSANXUAT.NGAYDUKIENHOANTHANH</td>
+                                    <td>@item.sTIENDOSANXUAT.NGAYHOANTHANHTHUCTE</td>
+                                    <td>@item.sTIENDOSANXUAT.GIAIDOANSANXUAT</td>
+                                    <td>@item.sTIENDOSANXUAT.MOTA</td>
+                                    <td>@item.sTIENDOSANXUAT.SOLUONG</td>
+                                    <td class="tacvu">
+                                        <a class="nutthongtinchitiet" href="@Url.Action("showchitiettiendo", "Nhanviensanxuat", new { matd = item.sTIENDOSANXUAT.MATIENDOSANXUAT, tenkh = item.tenkhachhang, tennhanvien = item.tennhanviensanxuat })">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+                                            </svg>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <h1 style="color: mediumturquoise">Sản phẩm đã hoàn thành</h1>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" style="width: 100px;">Mã tiến độ</th>
+                                <th scope="col" style="width: 150px;">Tên khách hàng</th>
+                                <th scope="col" style="width: 150px;">Tên nhân viên</th>
+                                <th scope="col" style="width: 150px;">Ngày sản xuất</th>
+                                <th scope="col" style="width: 150px;">Ngày dự kiến hoàn thành</th>
+                                <th scope="col" style="width: 150px;">Ngày hoàn thành</th>
+                                <th scope="col" style="width: 150px;">Giai đoạn sản xuất</th>
+                                <th scope="col" style="width: 200px;">Mô tả</th>
+                                <th scope="col" style="width: 50px;">Số lượng</th>
+                                <th scope="col" style="width: 100px;">Tác vụ</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.tiendohoanthien)
+                            {
+                                  <tr class="mauxanhladam">
+                                        <td>@item.sTIENDOSANXUAT.MATIENDOSANXUAT</td>
+                                        <td>@item.tenkhachhang</td>
+                                        <td>@item.tennhanviensanxuat</td>
+                                        <td>@item.sTIENDOSANXUAT.NGAYSANXUAT</td>
+                                        <td>@item.sTIENDOSANXUAT.NGAYDUKIENHOANTHANH</td>
+                                        <td>@item.sTIENDOSANXUAT.NGAYHOANTHANHTHUCTE</td>
+                                        <td>@item.sTIENDOSANXUAT.GIAIDOANSANXUAT</td>
+                                        <td>@item.sTIENDOSANXUAT.MOTA</td>
+                                        <td>@item.sTIENDOSANXUAT.SOLUONG</td>
+                                        <td class="tacvu">
+                                            <a class="nutthongtinchitiet" href="@Url.Action("showchitiettiendo", "Nhanviensanxuat", new { matd = item.sTIENDOSANXUAT.MATIENDOSANXUAT, tenkh = item.tenkhachhang, tennhanvien = item.tennhanviensanxuat })">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+                                                </svg>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+                            {
+
+                            }
+
+            <div id="tiendocuatoi" class="content-section" style="display: none;">
+                <h2>Tiến độ sản xuất của tôi</h2>
+                <!-- Nội dung quản lý tiến độ sản xuất -->
+                <h1 style="color: mediumturquoise">Đơn hàng chưa hoàn thành</h1>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" style="width: 100px;">Mã tiến độ</th>
+                            <th scope="col" style="width: 100px;">Ảnh tiến độ</th>
+                            <th scope="col" style="width: 150px;">Ngày sản xuất</th>
+                            <th scope="col" style="width: 150px;">Ngày dự kiến hoàn thành</th>
+                            <th scope="col" style="width: 150px;">Ngày hoàn thành</th>
+                            <th scope="col" style="width: 150px;">Giai đoạn sản xuất</th>
+                            <th scope="col" style="width: 200px;">Mô tả</th>
+                            <th scope="col" style="width: 50px;">Số lượng</th>
+                            <th scope="col" style="width: 100px;">Tác vụ</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.sanxuatchuahoanthanhcuatoi)
+                            {
+                            <tr>
+                                <td>@item.sTIENDOSANXUAT.MATIENDOSANXUAT</td>
+                                <td><img style="width: 200px" src="@item.sTIENDOSANXUAT.ANHMINHHOA" /></td>
+                                <td>@item.sTIENDOSANXUAT.NGAYSANXUAT</td>
+                                <td>@item.sTIENDOSANXUAT.NGAYDUKIENHOANTHANH</td>
+                                <td>@item.sTIENDOSANXUAT.NGAYHOANTHANHTHUCTE</td>
+                                <td>@item.sTIENDOSANXUAT.GIAIDOANSANXUAT</td>
+                                <td>@item.sTIENDOSANXUAT.MOTA</td>
+                                <td>@item.sTIENDOSANXUAT.SOLUONG</td>
+                                <td class="tacvu">
+                                    <a class="nutthongtinchitiet" href="@Url.Action("tiendocuatoi", "Nhanviensanxuat", new { matiendo = item.sTIENDOSANXUAT.MATIENDOSANXUAT })">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <h1 style="color: mediumturquoise">Đơn hàng đã hoàn thành</h1>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" style="width: 100px;">Mã tiến độ</th>
+                            <th scope="col" style="width: 100px;">Ảnh tiến độ</th>
+                            <th scope="col" style="width: 150px;">Ngày sản xuất</th>
+                            <th scope="col" style="width: 150px;">Ngày dự kiến hoàn thành</th>
+                            <th scope="col" style="width: 150px;">Ngày hoàn thành</th>
+                            <th scope="col" style="width: 150px;">Giai đoạn sản xuất</th>
+                            <th scope="col" style="width: 200px;">Mô tả</th>
+                            <th scope="col" style="width: 50px;">Số lượng</th>
+                            <th scope="col" style="width: 100px;">Tác vụ</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.sanxuatdahoanthanhcuatoi)
+                            {
+                            <tr>
+                                <td>@item.sTIENDOSANXUAT.MATIENDOSANXUAT</td>
+                                <td><img style="width: 200px" src="@item.sTIENDOSANXUAT.ANHMINHHOA" /></td>
+                                <td>@item.sTIENDOSANXUAT.NGAYSANXUAT</td>
+                                <td>@item.sTIENDOSANXUAT.NGAYDUKIENHOANTHANH</td>
+                                <td>@item.sTIENDOSANXUAT.NGAYHOANTHANHTHUCTE</td>
+                                <td>@item.sTIENDOSANXUAT.GIAIDOANSANXUAT</td>
+                                <td>@item.sTIENDOSANXUAT.MOTA</td>
+                                <td>@item.sTIENDOSANXUAT.SOLUONG</td>
+                                <td class="tacvu">
+                                    <a class="nutthongtinchitiet" href="@Url.Action("tiendocuatoi", "Nhanviensanxuat", new { matiendo = item.sTIENDOSANXUAT.MATIENDOSANXUAT })">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+    <script src="~/Scripts/quanly.js" defer></script>
+</body>
+</html>
+

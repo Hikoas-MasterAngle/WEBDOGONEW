@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Error404";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+}
+
+<style>
+    .error-404 {
+        text-align: center;
+        margin-top: 100px;
+        color: #333;
+    }
+
+        .error-404 h1 {
+            font-size: 150px;
+            color: #FF6A6A;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .error-404 p {
+            font-size: 20px;
+            color: #666;
+            margin: 10px 0 20px;
+        }
+
+    .back-home {
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 18px;
+        background-color: #FF6A6A;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: 0.3s ease;
+    }
+
+        .back-home:hover {
+            background-color: #FF3B3B;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+</style>
+
+<div class="error-404" style="margin-bottom: 100px">
+    <h1>404</h1>
+    <p>Page Not Found</p>
+    <a href="/" class="back-home">Back to Home</a>
+</div>

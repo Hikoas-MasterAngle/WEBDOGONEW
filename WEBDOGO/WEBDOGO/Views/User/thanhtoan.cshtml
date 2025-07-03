@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "thanhtoan";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+    WEBDOGO.Models.KHACHHANG kh = (WEBDOGO.Models.KHACHHANG)Session["taikhoan"];
+    double tongtiencanthanhtoan = 0;
+    foreach(var item in ViewBag.dssp)
+    {
+        tongtiencanthanhtoan += item.gIOHANG.TONGTIEN;
+    }
+}
+
+
+@section Styles {
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/Pay.css")?v=@DateTime.Now.Ticks">
+}
+
+
+<!--Body Thanh Toan -->
+<div class="bodypay">
+    <div class="address">
+        <div class="titleaddress">
+            <div style=" float: left;">
+                <img src="~/IMG/No-sanpham/maps-and-flags.png" style="width: 30px; height: 30px;">
+            </div>
+            <div style="float: left;">
+                <h3>Địa Chỉ Nhận Hàng</h3>
+            </div>
+        </div>
+        <div class="infaddress">
+            <div class="namephone">
+                <p>@kh.HOVATEN </p>
+                <p>@kh.SDT</p>
+            </div>
+            <div class="mainadd">
+                @kh.DIACHICHITIET
+            </div>
+            <div>
+                <a href="@Url.Action("capnhapthongtinnguoidung","User")">Thay Đổi</a>
+            </div>
+        </div>
+    </div>
+    <div class="titlecheckout">
+        <H2>Thanh Toán </H2>
+    </div>
+    <div class="maincheckout">
+        <div class="tablecheckout">
+            <table>
+                <tr class="sanpham">
+                    <th style="width: 15%;">ảnh sản phẩm</th>
+                    <th style="width: 35%;">Tên sản Phẩm</th>
+                    <th style="width: 20%;">Đơn giá</th>
+                    <th style="width: 10%;">Số Lượng</th>
+                    <th style="width: 500px;">Tổng Tiền</th>
+                </tr>
+                @foreach (var item in ViewBag.dssp)
+                {
+                    <tr>
+                        <td style="text-align: center"><img src="@item.sANPHAM.ANHSANPHAM" style="width: 100px;"></td>
+                        <td><p>@item.sANPHAM.TENSANPHAM đ</p></td>
+                        <td><p>@item.sANPHAM.GIASANPHAM đ</p></td>
+                        <td><p>@item.gIOHANG.SOLUONG</p></td>
+                        <td><p>@item.gIOHANG.TONGTIEN đ</p></td>
+                    </tr>
+                }
+            </table>
+            <div class="note">
+                <div>
+                    <p>Lời Nhắn</p>
+                    <textarea placeholder="Lưu ý cho cửa hàng"></textarea>
+                </div>
+            </div>
+            <div class="shipping">
+                <div>
+                    <div class="infshipping">
+                        <img src="~/IMG/No-sanpham/delivery.png">
+                        Giao hàng nhanh
+                        <p>Miễn Phí</p>
+                    </div>
+                    <div class="rule">
+                        <a href="#"><img src="~/IMG/No-sanpham/question.png"><p>Chính sách mua sắm</p></a>
+                    </div>
+                    <div class="count">
+                        Tổng Tiền: @tongtiencanthanhtoan đ<p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pay">
+            <div class="payhow">
+                <h1>Phương Thức Thanh Toán</h1>
+                <select class="danhsachthanhtoan">
+                    <option value="Thanhtoanonline">Thanh toán online</option>
+                    <option value="Thanhtoanoffline">Thanh toán khi nhận hàng</option>
+                </select>
+            </div>
+            <div class="infpay">
+                <img src="https://qr.ecaptcha.vn/api/generate/Mb/0967287418/NGUYEN%20THE%20VINH?&is_mask=0&bg=7" alt="Mã QR" class="qr-code" style="width: 500px">
+            </div>
+            <div class="countpay">
+                <h4>Tổng Tiền Hàng</h4> <p>@tongtiencanthanhtoan đ</p>
+                <h4>Tổng Tiền Vận Chuyển</h4> <p>Miễn Phí</p>
+                <h4>Tổng Thanh Toán</h4> <p>@tongtiencanthanhtoan đ</p>
+            </div>
+            <div class="btnpay">
+                <button onclick="location.href='@Url.Action("dathang", "User")?tongsotien=@tongtiencanthanhtoan&paymentMethod=' + document.querySelector('.danhsachthanhtoan').value">Đặt hàng</button>
+</div>
+        </div>
+    </div>
+</div>
+<!--End body Thanh Toan-->
+<script>
+    const infpay = document.querySelector(".infpay");
+
+    document.querySelector(".danhsachthanhtoan").addEventListener("change", function () {
+        var selectedValue = this.value;
+        if (selectedValue === "Thanhtoanonline") {
+            infpay.style.display = 'block';
+        } else if (selectedValue === "Thanhtoanoffline") {
+            infpay.style.display = 'none';
+        }
+    });
+</script>

@@ -1,0 +1,9 @@
+﻿@model WEBDOGO.Models.HOADON
+
+
+@using (Html.BeginForm("timkiemhoadon", "Nhanvientaichinh", FormMethod.Post))
+{
+    @Html.TextBoxFor(m => m.SOHOADON, new { @class = "search-input", @placeholder = "Tìm kiếm hóa đơn ... ", @name = "searchTerm" })
+    <button type="submit" class="search-button">Tìm kiếm</button>
+}
+

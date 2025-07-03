@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "showvanchuyencuatoi";
+    Layout = "~/Views/Shared/_Layoutvanchuyen.cshtml";
+
+    var groupdonhang = ViewBag.groupedByTinhcuatoi1 as Dictionary<string, List<WEBDOGO.Models.quanlyvanchuyen>>;
+
+    var nv = (WEBDOGO.Models.NHANVIENVANCHUYEN)Session["taikhoan"];
+}
+
+    @if (groupdonhang != null && groupdonhang.Count > 0)
+    {
+        foreach (var group in groupdonhang)
+        {
+            <h2>Tỉnh: @group.Key</h2>
+            <table border="1" class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" style="width: 50px;">Mã vận chuyển</th>
+                        <th scope="col" style="width: 150px;">Tên khách hàng</th>
+                        <th scope="col" style="width: 70px;">Số điện thoại</th>
+                        <th scope="col" style="width: 150px;">Địa chỉ chi tiết</th>
+                        <th scope="col" style="width: 150px;">Sản phẩm</th>
+                        <th scope="col" style="width: 50px;">Số lượng</th>
+                        <th scope="col" style="width: 50px;">Số tiền</th>
+                        <th scope="col" style="width: 200px;">Ngày bắt đầu gửi</th>
+                        <th scope="col" style="width: 100px;">Chi phí vận chuyển</th>
+                        <th scope="col" style="width: 200px;">Trạng thái vận chuyển</th>
+                        <th scope="col" style="width: 50px;">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var donHang in group.Value)
+                    {
+                        <tr>
+                            <td>@donHang.vANCHUYEN.MAVANCHUYEN</td>
+                            <td>@donHang.kHACHHANG.HOVATEN</td>
+                            <td>@donHang.kHACHHANG.SDT</td>
+                            <td>@donHang.kHACHHANG.DIACHICHITIET</td>
+                            @if (@donHang.sANPHAMTHEOYEUCAU != null)
+                            {
+                                <td>@donHang.sANPHAMTHEOYEUCAU.LOAISANPHAM</td>
+                                <td>@donHang.sANPHAMTHEOYEUCAU.SOLUONG</td>
+                                <td>@donHang.sANPHAMTHEOYEUCAU.TONGSOTIENSANXUAT</td>
+                            }
+                            else
+                            {
+                                <td>@donHang.sANPHAM.TENSANPHAM</td>
+                                <td>@donHang.cHITIETHOADON.SOLUONG</td>
+                                <td>@donHang.cHITIETHOADON.TONGTIEN</td>
+                            }
+                            <td>@donHang.vANCHUYEN.NGAYBATDAUGUI</td>
+                            <td>@donHang.vANCHUYEN.CHIPHIVANCHUYEN</td>
+                            <td>@donHang.vANCHUYEN.TRANGTHAIVANCHUYEN</td>
+                            <td class="tacvu">
+                                <a class="nutthongtinchitiet" href="@Url.Action("vanchuyencuatoi", "Nhanvienvanchuyen", new { mavc = donHang.vANCHUYEN.MAVANCHUYEN })">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" />
+                                    </svg>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+</div>

@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "nhapcodedoimatkhau";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+}
+
+<style>
+    .otp-form {
+        width: 400px;
+        margin: 80px auto;
+        padding: 40px 30px;
+        background: linear-gradient(to right, #fdfbfb, #ebedee);
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        text-align: center;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+        .otp-form h1 {
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 24px;
+        }
+
+    .input-box {
+        position: relative;
+        margin-bottom: 25px;
+    }
+
+        .input-box input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+            .input-box input:focus {
+                border-color: #0088cc;
+                box-shadow: 0 0 5px rgba(0,136,204,0.3);
+            }
+
+    .submit-btn button {
+        width: 100%;
+        padding: 12px;
+        background-color: #0088cc;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .submit-btn button:hover {
+            background-color: #0072a8;
+        }
+
+    .back-home {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #555;
+    }
+
+        .back-home a {
+            color: #0088cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .back-home a:hover {
+                text-decoration: underline;
+            }
+</style>
+
+<form action="@Url.Action("nhapcodedoimatkhau", "User")" method="post" class="otp-form">
+    @Html.AntiForgeryToken()
+    <h1>Nhập mã xác nhận</h1>
+    <div class="input-box">
+        <input type="text" name="userinputcode" placeholder="Nhập mã code từ gmail" required maxlength="4">
+        <i class='bx bxs-user'></i>
+    </div>
+    <div class="submit-btn">
+        <button type="submit">Xác nhận</button>
+    </div>
+    <div class="back-home">
+        <p>Quay lại trang chủ? <a href="@Url.Action("Trangchu","TrangChu")">Trang chủ</a></p>
+    </div>
+</form>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cddbbac2c1c74967b1b2e36ab2aaf4bb" Name="Diagram1">
+        <EntityTypeShape EntityType="SQLWEB2Model.ADMIN" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.CHITIETHOADON" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.DOANHTHU" Width="1.5" PointX="10.5" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.GIOHANG" Width="1.5" PointX="6" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.HOADON" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.KHACHHANG" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.LICHSUDANGNHAP" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.LIENHE" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.NHANVIENSANXUAT" Width="1.5" PointX="5.25" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.NHANVIENTAICHINH" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.NHANVIENVANCHUYEN" Width="1.5" PointX="11.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.SANPHAM" Width="1.5" PointX="3.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.SANPHAMTHEOYEUCAU" Width="1.5" PointX="5.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.sysdiagram" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.TIENDOSANXUAT" Width="1.5" PointX="7.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQLWEB2Model.VANCHUYEN" Width="1.5" PointX="13.5" PointY="14.375" IsExpanded="true" />
+        <AssociationConnector Association="SQLWEB2Model.FK__CHITIETHO__MAHOA__339FAB6E" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__CHITIETHO__MASAN__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__DOANHTHU__MACHIT__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__VANCHUYEN__MACHI__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__DOANHTHU__MASANP__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__GIOHANG__MAKHACH__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__GIOHANG__MASANPH__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__HOADON__MAKHACHH__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__SANPHAMTH__MAHOA__3587F3E0" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__LICHSUDAN__IDTAI__0D7A0286" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__LIENHE__MAKHACHH__2BFE89A6" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__SANPHAMTH__MAKHA__55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__TIENDOSAN__MANHA__531856C7" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__VANCHUYEN__MANHA__540C7B00" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__TIENDOSAN__MASAN__5224328E" ManuallyRouted="false" />
+        <AssociationConnector Association="SQLWEB2Model.FK__VANCHUYEN__MASAN__5DCAEF64" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SQLWEB2ModelStoreContainer" CdmEntityContainer="SQLWEB2Entities1">
+    <EntitySetMapping Name="ADMINs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.ADMIN">
+        <MappingFragment StoreEntitySet="ADMIN">
+          <ScalarProperty Name="MAADMIN" ColumnName="MAADMIN" />
+          <ScalarProperty Name="TENQUANLY" ColumnName="TENQUANLY" />
+          <ScalarProperty Name="TENDANGNHAP" ColumnName="TENDANGNHAP" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="BIKHOA" ColumnName="BIKHOA" />
+          <ScalarProperty Name="SOLANDANGNHAPSAI" ColumnName="SOLANDANGNHAPSAI" />
+          <ScalarProperty Name="THOIGIANDANGNHAPSAICUOICUNG" ColumnName="THOIGIANDANGNHAPSAICUOICUNG" />
+          <ScalarProperty Name="SessionToken" ColumnName="SessionToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHITIETHOADONs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.CHITIETHOADON">
+        <MappingFragment StoreEntitySet="CHITIETHOADON">
+          <ScalarProperty Name="MACHITIETHOADON" ColumnName="MACHITIETHOADON" />
+          <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+          <ScalarProperty Name="MASANPHAM" ColumnName="MASANPHAM" />
+          <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="MATIENDOSANXUAT" ColumnName="MATIENDOSANXUAT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOANHTHUs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.DOANHTHU">
+        <MappingFragment StoreEntitySet="DOANHTHU">
+          <ScalarProperty Name="MADOANHTHU" ColumnName="MADOANHTHU" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="GIADABAN" ColumnName="GIADABAN" />
+          <ScalarProperty Name="NGAYTAO" ColumnName="NGAYTAO" />
+          <ScalarProperty Name="MACHITIETHOADON" ColumnName="MACHITIETHOADON" />
+          <ScalarProperty Name="MASANPHAMTHEOYEUCAU" ColumnName="MASANPHAMTHEOYEUCAU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GIOHANGs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.GIOHANG">
+        <MappingFragment StoreEntitySet="GIOHANG">
+          <ScalarProperty Name="MAGIOHANG" ColumnName="MAGIOHANG" />
+          <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
+          <ScalarProperty Name="MASANPHAM" ColumnName="MASANPHAM" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+          <ScalarProperty Name="NGAYTHEM" ColumnName="NGAYTHEM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOADONs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.HOADON">
+        <MappingFragment StoreEntitySet="HOADON">
+          <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+          <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
+          <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+          <ScalarProperty Name="TRANGTHAITHANHTOAN" ColumnName="TRANGTHAITHANHTOAN" />
+          <ScalarProperty Name="PHUONGTHUCTHANHTOAN" ColumnName="PHUONGTHUCTHANHTOAN" />
+          <ScalarProperty Name="MANHANVIENTAICHINH" ColumnName="MANHANVIENTAICHINH" />
+          <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
+          <ScalarProperty Name="SOHOADON" ColumnName="SOHOADON" />
+          <ScalarProperty Name="TRANGTHAIHUYDON" ColumnName="TRANGTHAIHUYDON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACHHANGs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.KHACHHANG">
+        <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
+          <ScalarProperty Name="TENDANGNHAP" ColumnName="TENDANGNHAP" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="HOVATEN" ColumnName="HOVATEN" />
+          <ScalarProperty Name="TUOI" ColumnName="TUOI" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="CAPDO" ColumnName="CAPDO" />
+          <ScalarProperty Name="TINH" ColumnName="TINH" />
+          <ScalarProperty Name="DIACHICHITIET" ColumnName="DIACHICHITIET" />
+          <ScalarProperty Name="BIKHOA" ColumnName="BIKHOA" />
+          <ScalarProperty Name="SOLANDANGNHAPSAI" ColumnName="SOLANDANGNHAPSAI" />
+          <ScalarProperty Name="THOIGIANDANGNHAPSAICUOICUNG" ColumnName="THOIGIANDANGNHAPSAICUOICUNG" />
+          <ScalarProperty Name="SessionToken" ColumnName="SessionToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LICHSUDANGNHAPs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.LICHSUDANGNHAP">
+        <MappingFragment StoreEntitySet="LICHSUDANGNHAP">
+          <ScalarProperty Name="IDLICHSUDANGNHAP" ColumnName="IDLICHSUDANGNHAP" />
+          <ScalarProperty Name="IDTAIKHOAN" ColumnName="IDTAIKHOAN" />
+          <ScalarProperty Name="THOIGIAN" ColumnName="THOIGIAN" />
+          <ScalarProperty Name="DIA_CHI_IP" ColumnName="DIA_CHI_IP" />
+          <ScalarProperty Name="TRINH_DUYET" ColumnName="TRINH_DUYET" />
+          <ScalarProperty Name="THIET_BI" ColumnName="THIET_BI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LIENHEs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.LIENHE">
+        <MappingFragment StoreEntitySet="LIENHE">
+          <ScalarProperty Name="MALIENHE" ColumnName="MALIENHE" />
+          <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
+          <ScalarProperty Name="HOVATEN" ColumnName="HOVATEN" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="LOINHAN" ColumnName="LOINHAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIENSANXUATs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.NHANVIENSANXUAT">
+        <MappingFragment StoreEntitySet="NHANVIENSANXUAT">
+          <ScalarProperty Name="MANHANVIENSANXUAT" ColumnName="MANHANVIENSANXUAT" />
+          <ScalarProperty Name="TENNHANVIENSANXUAT" ColumnName="TENNHANVIENSANXUAT" />
+          <ScalarProperty Name="TUOI" ColumnName="TUOI" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="SOCCCD" ColumnName="SOCCCD" />
+          <ScalarProperty Name="TENDANGNHAP" ColumnName="TENDANGNHAP" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="NGAYVAOLAM" ColumnName="NGAYVAOLAM" />
+          <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+          <ScalarProperty Name="NGAYNGHILAM" ColumnName="NGAYNGHILAM" />
+          <ScalarProperty Name="VAITRO" ColumnName="VAITRO" />
+          <ScalarProperty Name="BIKHOA" ColumnName="BIKHOA" />
+          <ScalarProperty Name="SOLANDANGNHAPSAI" ColumnName="SOLANDANGNHAPSAI" />
+          <ScalarProperty Name="THOIGIANDANGNHAPSAICUOICUNG" ColumnName="THOIGIANDANGNHAPSAICUOICUNG" />
+          <ScalarProperty Name="SessionToken" ColumnName="SessionToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIENTAICHINHs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.NHANVIENTAICHINH">
+        <MappingFragment StoreEntitySet="NHANVIENTAICHINH">
+          <ScalarProperty Name="MANHANVIENTAICHINH" ColumnName="MANHANVIENTAICHINH" />
+          <ScalarProperty Name="TENNHANVIENTAICHINH" ColumnName="TENNHANVIENTAICHINH" />
+          <ScalarProperty Name="TUOI" ColumnName="TUOI" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="SOCCCD" ColumnName="SOCCCD" />
+          <ScalarProperty Name="TENDANGNHAP" ColumnName="TENDANGNHAP" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="NGAYVAOLAM" ColumnName="NGAYVAOLAM" />
+          <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+          <ScalarProperty Name="NGAYNGHILAM" ColumnName="NGAYNGHILAM" />
+          <ScalarProperty Name="BIKHOA" ColumnName="BIKHOA" />
+          <ScalarProperty Name="SOLANDANGNHAPSAI" ColumnName="SOLANDANGNHAPSAI" />
+          <ScalarProperty Name="THOIGIANDANGNHAPSAICUOICUNG" ColumnName="THOIGIANDANGNHAPSAICUOICUNG" />
+          <ScalarProperty Name="SessionToken" ColumnName="SessionToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIENVANCHUYENs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.NHANVIENVANCHUYEN">
+        <MappingFragment StoreEntitySet="NHANVIENVANCHUYEN">
+          <ScalarProperty Name="MANHANVIENVANCHUYEN" ColumnName="MANHANVIENVANCHUYEN" />
+          <ScalarProperty Name="TENNHANVIENVANCHUYEN" ColumnName="TENNHANVIENVANCHUYEN" />
+          <ScalarProperty Name="TUOI" ColumnName="TUOI" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="SOCCCD" ColumnName="SOCCCD" />
+          <ScalarProperty Name="TENDANGNHAP" ColumnName="TENDANGNHAP" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="NGAYVAOLAM" ColumnName="NGAYVAOLAM" />
+          <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+          <ScalarProperty Name="NGAYNGHILAM" ColumnName="NGAYNGHILAM" />
+          <ScalarProperty Name="VAITRO" ColumnName="VAITRO" />
+          <ScalarProperty Name="BIKHOA" ColumnName="BIKHOA" />
+          <ScalarProperty Name="SOLANDANGNHAPSAI" ColumnName="SOLANDANGNHAPSAI" />
+          <ScalarProperty Name="THOIGIANDANGNHAPSAICUOICUNG" ColumnName="THOIGIANDANGNHAPSAICUOICUNG" />
+          <ScalarProperty Name="SessionToken" ColumnName="SessionToken" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANPHAMs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.SANPHAM">
+        <MappingFragment StoreEntitySet="SANPHAM">
+          <ScalarProperty Name="MASANPHAM" ColumnName="MASANPHAM" />
+          <ScalarProperty Name="TENSANPHAM" ColumnName="TENSANPHAM" />
+          <ScalarProperty Name="GIASANPHAM" ColumnName="GIASANPHAM" />
+          <ScalarProperty Name="LOAISANPHAM" ColumnName="LOAISANPHAM" />
+          <ScalarProperty Name="CHIEUDAI" ColumnName="CHIEUDAI" />
+          <ScalarProperty Name="CHIEURONG" ColumnName="CHIEURONG" />
+          <ScalarProperty Name="CHIEUCAO" ColumnName="CHIEUCAO" />
+          <ScalarProperty Name="CHATLIEU" ColumnName="CHATLIEU" />
+          <ScalarProperty Name="MOTASANPHAM" ColumnName="MOTASANPHAM" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="ANHSANPHAM" ColumnName="ANHSANPHAM" />
+          <ScalarProperty Name="DABAN" ColumnName="DABAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANPHAMTHEOYEUCAUs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.SANPHAMTHEOYEUCAU">
+        <MappingFragment StoreEntitySet="SANPHAMTHEOYEUCAU">
+          <ScalarProperty Name="MASANPHAMTHEOYEUCAU" ColumnName="MASANPHAMTHEOYEUCAU" />
+          <ScalarProperty Name="MAKHACHHANG" ColumnName="MAKHACHHANG" />
+          <ScalarProperty Name="LOAISANPHAM" ColumnName="LOAISANPHAM" />
+          <ScalarProperty Name="CHIEUDAI" ColumnName="CHIEUDAI" />
+          <ScalarProperty Name="CHIEURONG" ColumnName="CHIEURONG" />
+          <ScalarProperty Name="CHIEUCAO" ColumnName="CHIEUCAO" />
+          <ScalarProperty Name="VATLIEU" ColumnName="VATLIEU" />
+          <ScalarProperty Name="MAUSAC" ColumnName="MAUSAC" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="TONGSOTIENSANXUAT" ColumnName="TONGSOTIENSANXUAT" />
+          <ScalarProperty Name="MOTASANPHAM" ColumnName="MOTASANPHAM" />
+          <ScalarProperty Name="TRANGTHAIDUYET" ColumnName="TRANGTHAIDUYET" />
+          <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+          <ScalarProperty Name="ANHMINHHOA" ColumnName="ANHMINHHOA" />
+          <ScalarProperty Name="KHACHHANGCHAPNHAN" ColumnName="KHACHHANGCHAPNHAN" />
+          <ScalarProperty Name="TONGTIENSANPHAM" ColumnName="TONGTIENSANPHAM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SQLWEB2Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIENDOSANXUATs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.TIENDOSANXUAT">
+        <MappingFragment StoreEntitySet="TIENDOSANXUAT">
+          <ScalarProperty Name="MATIENDOSANXUAT" ColumnName="MATIENDOSANXUAT" />
+          <ScalarProperty Name="NGAYSANXUAT" ColumnName="NGAYSANXUAT" />
+          <ScalarProperty Name="NGAYDUKIENHOANTHANH" ColumnName="NGAYDUKIENHOANTHANH" />
+          <ScalarProperty Name="NGAYHOANTHANHTHUCTE" ColumnName="NGAYHOANTHANHTHUCTE" />
+          <ScalarProperty Name="GIAIDOANSANXUAT" ColumnName="GIAIDOANSANXUAT" />
+          <ScalarProperty Name="MANHANVIENSANXUAT" ColumnName="MANHANVIENSANXUAT" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="MASANPHAMTHEOYEUCAU" ColumnName="MASANPHAMTHEOYEUCAU" />
+          <ScalarProperty Name="ANHMINHHOA" ColumnName="ANHMINHHOA" />
+          <ScalarProperty Name="NGHIEMTHU" ColumnName="NGHIEMTHU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VANCHUYENs">
+      <EntityTypeMapping TypeName="SQLWEB2Model.VANCHUYEN">
+        <MappingFragment StoreEntitySet="VANCHUYEN">
+          <ScalarProperty Name="MAVANCHUYEN" ColumnName="MAVANCHUYEN" />
+          <ScalarProperty Name="NGAYBATDAUGUI" ColumnName="NGAYBATDAUGUI" />
+          <ScalarProperty Name="NGAYDUKIENDUOCGIAO" ColumnName="NGAYDUKIENDUOCGIAO" />
+          <ScalarProperty Name="PHUONGTHUCVANCHUYEN" ColumnName="PHUONGTHUCVANCHUYEN" />
+          <ScalarProperty Name="CHIPHIVANCHUYEN" ColumnName="CHIPHIVANCHUYEN" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="TRANGTHAIVANCHUYEN" ColumnName="TRANGTHAIVANCHUYEN" />
+          <ScalarProperty Name="MANHANVIENVANCHUYEN" ColumnName="MANHANVIENVANCHUYEN" />
+          <ScalarProperty Name="MACHITIETHOADON" ColumnName="MACHITIETHOADON" />
+          <ScalarProperty Name="MASANPHAMTHEOYEUCAU" ColumnName="MASANPHAMTHEOYEUCAU" />
+          <ScalarProperty Name="NGAYGIAOTHUCTE" ColumnName="NGAYGIAOTHUCTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

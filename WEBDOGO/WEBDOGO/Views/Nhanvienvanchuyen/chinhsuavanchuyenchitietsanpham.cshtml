@@ -1,0 +1,142 @@
+﻿@model WEBDOGO.Models.VANCHUYEN
+@{
+    Layout = null;
+    List<SelectListItem> nhanvienvanchuyen = new List<SelectListItem>();
+
+    foreach (var item in ViewBag.nhanvienvc)
+    {
+        nhanvienvanchuyen.Add(new SelectListItem
+        {
+            Text = item.TENNHANVIENVANCHUYEN,
+            Value = item.MANHANVIENVANCHUYEN.ToString()
+        });
+    }
+    var tk = (WEBDOGO.Models.NHANVIENVANCHUYEN)Session["taikhoan"];
+
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sản Phẩm Theo Yêu Cầu</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/chitietquanlyyeucau.css")?v=@DateTime.Now.Ticks">
+</head>
+<body>
+    <div class="container">
+        <h2>Chỉnh sửa hóa đơn</h2>
+        @using (Html.BeginForm("chinhsuavanchuyenchitietsanpham", "Nhanvienvanchuyen", FormMethod.Post))
+        {
+            <div class="form-row">
+                <!-- Cột 1 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="MAVANCHUYEN">Mã vận chuyển:</label>
+                        @Html.TextBoxFor(m => m.MAVANCHUYEN, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYBATDAUGUI">Ngày bắt đầu gửi:</label>
+                        <input value="@Model.NGAYBATDAUGUI" readonly />
+                        @Html.TextBoxFor(m => m.NGAYBATDAUGUI, new { @type = "date" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYDUKIENDUOCGIAO">Ngày dự kiến được giao :</label>
+                        <input value="@Model.NGAYDUKIENDUOCGIAO" readonly />
+                        @Html.TextBoxFor(m => m.NGAYDUKIENDUOCGIAO, new { @type = "date" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Ngaygiaothucte">Ngày giao thực tế:</label>
+                        @Html.TextBoxFor(m => m.NGAYGIAOTHUCTE, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PHUONGTHUCVANCHUYEN">Phương thức vận chuyện:</label>
+                        @Html.TextBoxFor(m => m.PHUONGTHUCVANCHUYEN, new { @readonly = "readonly" })
+                    </div>
+
+                </div>
+
+                <!-- Cột 2 -->
+                <div class="form-column">
+
+                    <div class="form-group">
+                        <label for="CHIPHIVANCHUYEN">Chi phí vận chuyển:</label>
+                        @Html.TextBoxFor(m => m.CHIPHIVANCHUYEN, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="MOTA">Mô tả:</label>
+                        @Html.TextBoxFor(m => m.MOTA, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TRANGTHAIVANCHUYEN">Trạng thái vận chuyển:</label>
+                        @Html.TextBoxFor(m => m.TRANGTHAIVANCHUYEN, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NHANVIENVANCHUYEN">Nhân viên vận chuyển:</label>
+                        @Html.DropDownListFor(m => m.MANHANVIENVANCHUYEN, nhanvienvanchuyen, "Chọn nhân viên vận chuyển", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="mcthd">Mcthd:</label>
+                        @Html.TextBoxFor(m => m.MACHITIETHOADON, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="msptyc">msptyc:</label>
+                        @Html.TextBoxFor(m => m.MASANPHAMTHEOYEUCAU, new { @readonly = "readonly" })
+                    </div>
+
+
+                </div>
+            </div>
+
+            if (Model.TRANGTHAIVANCHUYEN == "Hoàn thành")
+            {
+
+                if (tk.VAITRO == "Trưởng VC")
+                {
+                    <!-- Nút Lưu -->
+                    <div class="form-group full-width">
+                        <button class="btn-save" onclick="location.href='@Url.Action("showgiaodienquanly","Nhanvienvanchuyen")'">Quay lại</button>
+                    </div>
+                }
+                else
+                {
+                    <!-- Nút Lưu -->
+                    <div class="form-group full-width">
+                        <button class="btn-save" onclick="location.href='@Url.Action("showvanchuyencuatoi","Nhanvienvanchuyen")'">Quay lại</button>
+                    </div>
+                }
+            }
+            else
+            {
+                if (tk.VAITRO == "Trưởng VC")
+                {
+                    <!-- Nút Lưu -->
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn-save">Cập nhập</button>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="button" class="btn-save" onclick="location.href='@Url.Action("showgiaodienquanly", "Nhanvienvanchuyen")'">Quay lại trang chủ</button>
+                    </div>
+                }
+                else
+                {
+                    <!-- Nút Lưu -->
+                    <div class="form-group full-width">
+                        <button type="submit" class="btn-save">Cập nhập</button>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="button" class="btn-save" onclick="location.href='@Url.Action("showvanchuyencuatoi", "Nhanvienvanchuyen")'">Quay lại trang chủ</button>
+                    </div>
+                }
+            }
+        }
+    </div>
+</body>
+</html>

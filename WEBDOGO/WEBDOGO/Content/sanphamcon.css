@@ -1,0 +1,339 @@
+
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+  
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+        background-color: #FFFFFF;
+      }
+  
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+  
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .swiper-slide img {
+        width: 100%;
+        height: 45vh;
+      }
+.swiper-slide {
+    background-color: transparent !important;
+}
+
+.mySwiper {
+    margin-top: 5vh;
+    margin-left: 2vh;
+    width: 400px !important;
+}
+
+.sanphambentrai {
+    margin-top: 5vh;
+    padding-right: 30px;
+    border-right: 1px solid #ddd;
+}
+
+.sanphambentraitren .danhmucsanpham{
+    font-size: 16px;
+    font-weight: bold;
+    color: #3f3f3f;
+}
+
+.sanphambentraitren .sanphambentraitrencon a {
+    margin-top: 30px;
+    font-size: 14px;
+    display: block;
+    font-family:"Open Sans", sans-serif;
+    text-decoration: none;
+    color: #505050;
+}
+
+.sanphambentraitren .sanphambentraitrencon a:hover {
+    color: #33C9DB;
+    font-weight: bold;
+}
+
+.sanphambentraitren .sanphambentraitrencon {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.sanphambentraiduoi .tieudesanphambentraiduoi {
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #3f3f3f;
+}
+
+.sanphambentraiduoi .sanphambentraiduoicon {
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.sanphambentraiduoi .sanphambentraiduoicon .sanphambentraiduoicon-con {
+    display: flex;
+    margin: 10px 20px;
+}
+
+.sanphambentraiduoi .sanphambentraiduoicon .sanphambentraiduoicon-con a {
+    text-decoration: none;
+    color: black;
+}
+
+.sanphambentraiduoi .sanphambentraiduoicon .sanphambentraiduoicon-con a:hover {
+    color: #33C9DB;
+    font-weight: bold;
+}
+
+.giasanphambentrai {
+    font-weight: bold;
+}
+
+.sanphambentraiduoi .sanphambentraiduoicon .sanphambentraiduoicon-con .sanpham-noidungconcuasanpham {
+    text-align: center;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.sanphambentraiduoi .sanphambentraiduoicon .sanphambentraiduoicon-con img {
+    width: 70px;
+}
+
+
+
+.sanphamconbenphai .namtrongthongtinsanpham {
+    margin-top: 5vh;
+    margin-left: 20px;
+}
+
+.sanphamconbenphai .thongtinsanpham .tensanpham {
+    border-bottom: 4px solid gray;
+    border-radius: 7px;
+}
+
+.sanphamconbenphai .thongtinsanpham .tensanpham h1 {
+    font-size: 1.7em;
+    font-weight: 700;
+}
+
+.sanphamconbenphai .thongtinsanpham .giasanpham p{
+    font-size: 25px;
+    font-weight: 500px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.sanphamconbenphai .thongtinsanpham .mota p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.
+
+.sanphamconbenphai .thongtinsanpham ul {
+    margin-left: 20px;
+}
+
+.sanphamconbenphai .thongtinsanpham ul li {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.themgiamsanpham-themgiohang {
+    display: flex;
+}
+
+.giam {
+    width: 20px;
+    height: 40px;
+    border: 1px solid #ddd;
+}
+.giam:focus {
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.giam:hover {
+    cursor: pointer;
+}
+
+.textthemsoluong {
+    width: 50px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.textthemsoluong:focus-visible {
+    box-shadow: none;
+    outline: none;
+}
+
+.them {
+    width: 20px;
+    height: 40px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.them svg {
+    width: 10px !important;
+}
+
+.giam svg {
+    width: 10px !important;
+}
+
+.them:focus {
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.them:hover {
+    cursor: pointer;
+}
+
+.nutthemgiohang {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white !important;
+    width: 200px;
+    margin-left: 30px;
+    background-color: #48809B;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+}
+
+    .nutthemgiohang:hover {
+        cursor: pointer;
+        color: white !important;
+        background-color: #33C9DB;
+    }
+
+.nutthemgiohang:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.nutthemgiohang:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+.allnoidung {
+    border-top: 1px solid #ddd;
+    margin-left: 20px;
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+.tieudemota p {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.noidungmota {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 30px 30px;
+    font-size: 16px;
+    margin-top: 10px;
+    line-height: 3;
+}
+
+.allsanphamtuongtu {
+    margin-left: 30px;
+}
+
+.sanphamtuongtucon {
+    display: flex;
+    
+}
+
+.tieudesanphamtuongtu {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.thanhphansanphamtuongtu {
+    margin-top: 20px;
+    width: 180px;
+    height: 270px;
+    margin-right: 20px;
+    text-align: center;
+    border: 2px solid #ddd;
+}
+
+.thanhphansanphamtuongtu img {
+    max-width: 100%;
+    height: 170px;
+}
+
+.thanhphansanphamtuongtu a {
+    text-decoration: none;
+    color: black;
+}
+
+.tensaphamtuongtu {
+    margin-top: 30px;
+    color: #4b4b4b;
+}
+
+.giasanphamtuongtu {
+    font-weight: bold;
+}
+
+.sanphamcuaphanloccon-con div {
+    display: flex;
+    align-items: center;
+}
+
+.alert-success {
+    margin-top: 44px;
+    position: absolute;
+    visibility: hidden;
+    z-index: 999;
+    height: 100px;
+    width: 370px;
+    background-color: #8FBF2F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+}
+
+.success {
+    width: 70px;
+    color: white;
+    margin-right: 20px;
+}
+
+

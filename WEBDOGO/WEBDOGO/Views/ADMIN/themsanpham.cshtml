@@ -1,0 +1,129 @@
+﻿@model WEBDOGO.Models.SANPHAM
+@{
+    Layout = null;
+
+    List<SelectListItem> loaisanpham = new List<SelectListItem>
+{
+        new SelectListItem { Value = "Tượng gỗ", Text = "Tượng gỗ" },
+        new SelectListItem { Value = "Bình - Lục bình", Text = "Bình - Lục bình" },
+        new SelectListItem { Value = "Nội thất", Text = "Nội thất" },
+        new SelectListItem { Value = "Phong thủy", Text = "Phong thủy" },
+        new SelectListItem { Value = "Gia dụng", Text = "Gia dụng" },
+    };
+
+    List<SelectListItem> vatlieu = new List<SelectListItem>
+{
+        new SelectListItem { Value = "Gỗ Cẩm Lai", Text = "Gỗ Cẩm Lai" },
+        new SelectListItem { Value = "gỗ hương đỏ đăklak", Text = "gỗ hương đỏ đăklak" },
+        new SelectListItem { Value = "Gỗ Samanea", Text = "Gỗ Samanea" },
+        new SelectListItem { Value = "Gỗ hương đỏ", Text = "Gỗ hương đỏ" },
+    };
+
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sản Phẩm Theo Yêu Cầu</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/chitietquanlyyeucau.css")?v=@DateTime.Now.Ticks">
+</head>
+<body>
+    <div class="container">
+        <h2>Thông tin sản phẩm</h2>
+        @using (Html.BeginForm("themsanpham", "ADMIN", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-row">
+                <!-- Cột 1 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label>Tên sản phẩm:</label>
+                        @Html.TextBoxFor(m => m.TENSANPHAM, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gía sản phẩm:</label>
+                        @Html.TextBoxFor(m => m.GIASANPHAM, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="LOAISANPHAM">Loại sản phẩm: </label>
+                        @Html.DropDownListFor(m => m.LOAISANPHAM, loaisanpham, "Chọn loại sản phẩm", new { @class = "form-control", @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CHIEUDAI">Chiều dài</label>
+                        @Html.TextBoxFor(m => m.CHIEUDAI, new { @required = "required" })
+                    </div>
+
+
+
+                </div>
+
+                <!-- Cột 2 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="CHIEURONG">Chiều rộng</label>
+                        @Html.TextBoxFor(m => m.CHIEURONG, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CHIEUCAO">Chiều cao:</label>
+                        @Html.TextBoxFor(m => m.CHIEUCAO, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="CHATLIEU">Chất liệu: </label>
+                        @Html.DropDownListFor(m => m.CHATLIEU, vatlieu, "Chọn loại vật liệu", new { @class = "form-control", @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="MOTASANPHAM">Mô tả sản phẩm </label>
+                        @Html.TextAreaFor(m => m.MOTASANPHAM, new { @required = "required", @style = "height: 300px" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="SOLUONG">Số lượng</label>
+                        @Html.TextBoxFor(m => m.SOLUONG, new { @required = "required" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="anhminhhoa">Ảnh sản phẩm minh họa:</label>
+                    <input type="file" id="imageInput" name="HinhAnh" class="form-control" required/>
+                    <img id="preview" alt="Preview sẽ hiển thị ở đây">
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <button type="submit" class="btn-save" style="background-color: mediumturquoise">Thêm sản phẩm</button>
+
+                <a href="@Url.Action("showtrangquanly","ADMIN")" class="btn-save" style="background-color: gray; margin-top: 50px">Quay lại</a>
+            </div>
+        }
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const preview = document.getElementById('preview');
+
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0]; 
+
+            if (file) {
+                const reader = new FileReader(); 
+
+                reader.onload = function(e) {
+                    preview.src = e.target.result; 
+                };
+
+                reader.readAsDataURL(file); 
+            } else {
+                preview.src = "";
+            }
+        });</script>
+</body>
+</html>
+
+
+

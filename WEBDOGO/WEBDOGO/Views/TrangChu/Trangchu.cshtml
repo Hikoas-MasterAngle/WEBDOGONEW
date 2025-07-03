@@ -1,0 +1,215 @@
+﻿@model IEnumerable<WEBDOGO.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Trangchu";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+}
+
+<p>@ViewBag.ServerName</p>
+<!-- Nền trang -->
+<div class="selection-three">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 phantieude">
+                <h2 class="tieude">VẺ ĐẸP SANG TRỌNG</h2>
+                <h1>GIÁ THÀNH ƯU ĐÃI</h1>
+            </div>
+            <div class="gachchanxanh"></div>
+            <div class="col-xl-12">
+                <button class="btn btnmuangay" onclick="location.href ='@Url.Action("showsanpham", "TrangChu")'">
+                    MUA NGAY
+                </button>
+                <button class="btn btnxemthem">
+                    XEM THÊM
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End nền trang-->
+<!-- body 1-->
+<div class="body1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3">
+                <!--Phần conten bên trái-->
+                <div class="contenbanchay row">
+                    <div class="tieudebanchay col-xl-12 col-12">
+                        <h2>BÁN CHẠY</h2>
+                    </div>
+                    @for (int i = 0; i < Model.Count(); i++)
+                    {
+                        if (i >= 6)
+                        {
+                            break;
+                        }
+                        <a href="@Url.Action("chitietsanpham", "TrangChu" , new {id = Model.ElementAt(i).MASANPHAM})" style="text-decoration: none; width: 100%;">
+                            <div class="contenbanchay1 col-xl-12 col-6">
+                                <div class="imgbanchay">
+                                    <img src="@Model.ElementAt(i).ANHSANPHAM" alt="">
+                                </div>
+                                <div class="noidungbanchay">
+                                    <p class="tensanphamnoidungbanchay" style="color: black">@Model.ElementAt(i).TENSANPHAM</p>
+                                    <p class="gia" style="color: black">@Model.ElementAt(i).GIASANPHAM</p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+
+                <div class="quangcao1">
+                    <img src="noithat/quangcao/h3-banner1.jpg" alt="">
+                </div>
+
+                <div class="giamgia">
+                    <div class="tieudegiamgia">
+                        <h2>GIẢM GIÁ</h2>
+                    </div>
+                    <div class="slidesanpham1">
+                        <swiper-container class="mySwiper" space-between="30" pagination="true" pagination-clickable="true">
+                            @for (int i = 0; i < Model.Count(); i++)
+                            {
+                                if (i >= 10)
+                                {
+                                    break;
+                                }
+
+                                <swiper-slide>
+                                    <a href="@Url.Action("chitietsanpham", "TrangChu" , new {id = Model.ElementAt(i).MASANPHAM})">
+                                        <img src="@Model.ElementAt(i).ANHSANPHAM" alt="">
+                                        <p class="tensanphamslide">@Model.ElementAt(i).TENSANPHAM</p>
+                                        <p class="giasanphamslide">@Model.ElementAt(i).GIASANPHAM</p>
+                                    </a>
+                                </swiper-slide>
+                            }
+                        </swiper-container>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 contenphai">
+                <!--Phần conten bên phải-->
+                <div class="row">
+                    <div class="col-xl-6 quangcao2 col-12 col-md-12">
+                        <button class="btn"></button>
+                    </div>
+                    <div class="col-xl-6 quangcao3 col-12 col-md-12">
+                        <button class="btn"></button>
+                    </div>
+                </div>
+
+                <div class="tieudephai1 col-md-12">
+                    <h2>SẢN PHẨM TIÊU BIỂU</h2>
+                    <p>Một Số Sản Phẩm Được Chúng Tôi Làm Tâm Huyết Nhất</p>
+                </div>
+
+                <div class="danhsachsanpham">
+                    <div class="row">
+                        @for (int i = 0; i < Model.Count(); i++)
+                        {
+                            if (i >= 9)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                <div class="tungsanpham">
+                                    <a href="@Url.Action("chitietsanpham", "TrangChu" , new {id = Model.ElementAt(i).MASANPHAM})"><img src="@Model.ElementAt(i).ANHSANPHAM" alt=""></a>
+                                    <p>@Model.ElementAt(i).TENSANPHAM</p>
+                                    <p class="giasanpham">@Model.ElementAt(i).GIASANPHAM</p>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--End body1-->
+<!--body2-->
+<div class="body2">
+    <div class="container containnerbody2">
+        <div class="row benngoaiquangcao4">
+            <div class="quangcao4 col-xl-6">
+                <button class="btn quangcao4"></button>
+            </div>
+            <div class="quangcao4 col-xl-6">
+                <button class="btn quangcao4"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End body2-->
+<!--body3-->
+<div class="body3">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 tieudetuonggophongthuy">
+                <h3>TƯỢNG GỖ PHONG THỦY</h3>
+                <p>Các Mẫu Tượng Gỗ Phong Thủy Được Chúng Tôi Làm Tâm Huyết Nhất</p>
+            </div>
+            <div class="col-xl-12 slidetuonggophongthuy">
+                <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="30"
+                                  slides-per-view="3">
+
+                    @for (int i = 0; i < Model.Count(); i++)
+                    {
+                        if (i >= 10)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            <swiper-slide>
+                                <div class="btnslidetuonggophongthuy">
+                                    <a href="@Url.Action("chitietsanpham", "TrangChu" , new {id = Model.ElementAt(i).MASANPHAM})"><img src="@Model.ElementAt(i).ANHSANPHAM" alt=""></a>
+                                    <p class="">@Model.ElementAt(i).TENSANPHAM</p>
+                                    <p class="giaslide">@Model.ElementAt(i).GIASANPHAM</p>
+                                </div>
+                            </swiper-slide>
+                        }
+                    }
+                </swiper-container>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end body3-->
+
+
+<!--body 4-->
+<div class="body4">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 tieudegolientam">
+                <h3>GỖ LIỀN TẤM</h3>
+                <p>Các Mẫu Gỗ Tấm Liền Được Chúng Tôi Làm Tâm Huyết Nhất</p>
+            </div>
+            <div class="col-xl-12 slidetuonggophongthuy">
+                <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" space-between="30"
+                                  slides-per-view="3">
+                    @for (int i = 0; i < Model.Count(); i++)
+                    {
+                        if (i >= 10)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            <swiper-slide>
+                                <div class="btnslidetuonggophongthuy">
+                                    <a href="@Url.Action("chitietsanpham", "TrangChu" , new {id = Model.ElementAt(i).MASANPHAM})"><img src="@Model.ElementAt(i).ANHSANPHAM" alt=""></a>
+                                    <p class="">@Model.ElementAt(i).TENSANPHAM</p>
+                                    <p class="giaslide">@Model.ElementAt(i).GIASANPHAM</p>
+                                </div>
+                            </swiper-slide>
+                        }
+                    }
+                </swiper-container>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end body4-->

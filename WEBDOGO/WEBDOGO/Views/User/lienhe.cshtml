@@ -1,0 +1,41 @@
+﻿@model WEBDOGO.Models.LIENHE
+@{
+    ViewBag.Title = "lienhe";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="@Url.Content("~/Content/lienhe.css")?v=@DateTime.Now.Ticks">
+}
+
+
+<div class="contact-section fullalllienhe">
+    <div class="contact-container alllienhe">
+        <div class="contact-map">
+            <!-- Bản đồ Google -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.772663892439!2d106.67290467486006!3d10.980524689180935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d1085e2b1c37%3A0x73bfa5616464d0ee!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBUaOG7pyBE4bqndSBN4buZdA!5e0!3m2!1svi!2s!4v1728180944630!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    width="400"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+        <!--Form nhập-->
+        <div class="contact-info">
+            <h2 class="contact-title">Đồ gỗ xịn xò</h2>
+            <p>06 Trần Văn Ơn, Phú Hoà, Thủ Dầu Một, Bình Dương, Việt Nam</p>
+            <p>Hotline: 0126 922 0162</p>
+            <p>email: demonhunter@gmail.com</p>
+            <form action="@Url.Action("lienhe", "User")" class="contact-form" method="post">
+                @Html.TextBoxFor(m => m.HOVATEN, new { @required = "required", @class = "form-control", @placeholder = "Họ và tên" })
+                @Html.TextBoxFor(m => m.EMAIL, new { @required = "required", @class = "form-control", @placeholder = "Email" })
+                @Html.TextBoxFor(m => m.SDT, new { @required = "required", @class = "form-control", @placeholder = "Số điện thoại" })
+                @Html.TextAreaFor(m => m.LOINHAN, new { @required = "required", @class = "form-control", @placeholder = "Lời nhắn" })
+                <button type="submit" class="btn-submit">Gửi</button>
+            </form>
+        </div>
+    </div>
+</div>
+

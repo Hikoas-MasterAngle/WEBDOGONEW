@@ -1,0 +1,91 @@
+﻿@model WEBDOGO.Models.KHACHHANG
+@{
+    Layout = null;
+
+    List<SelectListItem> CAPDO = new List<SelectListItem>
+{
+        new SelectListItem {Value = "Thường", Text = "Thường"},
+        new SelectListItem {Value = "VIP", Text = "VIP"},
+    };
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sản Phẩm Theo Yêu Cầu</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/chitietquanlyyeucau.css")?v=@DateTime.Now.Ticks">
+</head>
+<body>
+    <div class="container">
+        <h2>Thông tin khách hàng</h2>
+        @using (Html.BeginForm("luucapnhapchitietkh", "ADMIN", FormMethod.Post))
+        {
+            <div class="form-row">
+                <!-- Cột 1 -->
+                <div class="form-column">
+                    <div class="form-group" hidden>
+                        <label>Mã nhân viên:</label>
+                        @Html.TextBoxFor(m => m.MAKHACHHANG, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tên nhân viên:</label>
+                        @Html.TextBoxFor(m => m.HOVATEN, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tuổi:</label>
+                        @Html.TextBoxFor(m => m.TUOI, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TINH">Tỉnh</label>
+                        @Html.TextBoxFor(m => m.TINH, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DIACHI">Địa Chỉ</label>
+                        @Html.TextBoxFor(m => m.DIACHICHITIET, new { @required = "required" })
+                    </div>
+
+
+
+                </div>
+
+                <!-- Cột 2 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="tendangnhap">Tên Đăng Nhập</label>
+                        @Html.TextBoxFor(m => m.TENDANGNHAP, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="matkhau">Mật Khẩu:</label>
+                        @Html.TextBoxFor(m => m.MATKHAU, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="SDT">Số Điện Thoại</label>
+                        @Html.TextBoxFor(m => m.SDT, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Cấp độ">Cấp độ: </label>
+                        @Html.DropDownListFor(m => m.CAPDO, CAPDO, "Chọn cấp độ cho khách hàng", new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <button type="submit" class="btn-save" style="background-color: mediumturquoise">Cập nhập</button>
+
+                <a href="@Url.Action("showtrangquanly","ADMIN")" class="btn-save" style="background-color: gray; margin-top: 50px">Quay lại</a>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "timkiemsanpham";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+}
+@using WEBDOGO.Models;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<WEBDOGO.Models.SANPHAM>
+
+
+@section Styles {
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/sanpham.css")?v=@DateTime.Now.Ticks">
+}
+<div class="dashboard-left">
+    <h2>DANH MỤC SẢN PHẨM</h2>
+    <div class="danhmuccon">
+        <ul>
+            <li><a href="#">Sản phẩm đặc biệt</a></li>
+            <li><a href="#">Bàn ăn liền tấm</a></li>
+            <li><a href="#">Sập gỗ, phản gỗ liền tấm</a></li>
+            <li><a href="#">Lục bình gỗ</a></li>
+            <li><a href="#">Bình gỗ hoa</a></li>
+            <li><a href="#">Tượng gỗ phong thủy</a></li>
+            <li><a href="#">Tranh Phong Thủy</a></li>
+            <li><a href="#">Đồ thờ gỗ</a></li>
+            <li><a href="#">Gỗ mỹ nghệ</a></li>
+            <li><a href="#">Nội thất phòng khách</a></li>
+            <li><a href="#">Nội thất phòng ngủ</a></li>
+        </ul>
+
+        <!--sản phẩm của phần lọc-->
+        <div class="sanphamcuaphanloc"></div>
+        <h2 class="tieudessanphamcuaphanloc">
+            Sản Phẩm
+        </h2>
+        <div class="sanphamcuaphanloccon">
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <div class="sanphamcuaphanloccon-con">
+                    <div>
+                        <a href="@Url.Action("chitietsanpham", "TrangChu" , new {id = Model.ElementAt(i).MASANPHAM})"><img src="@Model.ElementAt(i).ANHSANPHAM" alt=""></a>
+                    </div>
+                    <div class="sanpham-noidungconcuasanpham">
+                        <a href="#">
+                            <p class="tensanphamcuaphanloc">@Model.ElementAt(i).TENSANPHAM</p>
+                            <p class="giasanphamcuaphanloc">@Model.ElementAt(i).GIASANPHAM đ</p>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+   </div>
+
+<!--body 1-->
+<div class="body1">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Trang Chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sản Phẩm</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-xl-6 menuloc">
+                <button id="iconmenuloc">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 iconmenuloc">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <p>Lọc</p>
+                </button>
+            </div>
+            <div class="col-xl-6 hienthiketqua-sapxep">
+                <p>Hiển thị 1–20 trong 38 kết quả</p>
+                <select>
+                    <option value="">Thứ tự mặc định</option>
+                    <option value="">Giá thấp đến cao</option>
+                    <option value="">Giá cao xuống thấp</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end body1-->
+<!--Body2-->
+<div class="body2">
+    <div class="container">
+        <div class="row allsanpham">
+            @for (int i = 0; i < Model.Count(); i++)
+            {
+                <div class="sanpham">
+                    <a href="@Url.Action("chitietsanpham", "TrangChu" , new {id = Model.ElementAt(i).MASANPHAM})">
+                        <img src="@Model.ElementAt(i).ANHSANPHAM" alt="">
+                        <p class="tensanpham">@Model.ElementAt(i).TENSANPHAM</p>
+                        <p class="giasanpham">@Model.ElementAt(i).GIASANPHAM ₫</p>
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<!--Nút chuyển hướng-->
+<p style="display:flex; justify-content: center">Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount</p>
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("showsanpham", new { id = ViewBag.MaCD, page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+
+        .MenuTrang .pagination-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .MenuTrang ul li {
+            width: 20px;
+            border: solid 1px #C0C0C0;
+            margin-right: 1px;
+        }
+</style>

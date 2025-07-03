@@ -1,0 +1,211 @@
+﻿@model WEBDOGO.Models.Allnguoidung
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao diện Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <style>
+        * {
+            line-height: normal;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            min-height: 100vh;
+            background-image: url(../../IMG/No-sanpham/nendangnhap.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .thongtinchitiet {
+            z-index: 999;
+            position: absolute;
+            top: 10%;
+            left: 40%;
+            width: 500px;
+            display: block;
+        }
+
+        .thongtinchitiet {
+            border: 1px solid #007bff; /* Đường viền cho toàn bộ khối thông tin */
+            border-radius: 5px; /* Bo góc */
+            padding: 20px; /* Khoảng cách bên trong */
+            background-color: #f8f9fa; /* Màu nền */
+            margin: 20px 0; /* Khoảng cách phía trên và dưới */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+        }
+
+        .btnluu {
+            margin-top: 20px;
+            float: right;
+            margin-right: 20px;
+        }
+
+        .thongtinchitiet h5 {
+            margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+        }
+
+        .thongtinchitiet p {
+            margin: 10px 0; /* Khoảng cách giữa các thẻ p */
+        }
+
+        .thongtinchitiet input {
+            width: calc(100% - 20px); /* Chiều rộng của input */
+            padding: 8px; /* Khoảng cách bên trong */
+            border: 1px solid #007bff; /* Đường viền */
+            border-radius: 5px; /* Bo góc */
+            font-size: 16px; /* Kích thước chữ */
+            color: #333; /* Màu chữ */
+            background-color: #ffffff; /* Màu nền trắng cho input */
+        }
+
+            .thongtinchitiet input[readonly] {
+                background-color: #e9ecef; /* Màu nền cho input không sửa đổi */
+                cursor: not-allowed; /* Con trỏ khi không cho phép sửa đổi */
+            }
+
+        .close-button {
+            background-color: transparent; /* Nền trong suốt */
+            border: none; /* Không có đường viền */
+            color: #dc3545; /* Màu đỏ cho nút đóng */
+            position: absolute; /* Đặt vị trí tuyệt */
+            right: 30px;
+            cursor: pointer;
+        }
+
+            .close-button:focus {
+                outline: none;
+            }
+
+            .close-button svg {
+                width: 30px;
+            }
+
+        .nutthongtinchitiet svg {
+            color: #007bff;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <div class="container1">
+        @if (Model.nHANVIENTAICHINHs != null)
+         {
+         TempData["kiemtraloaitaikhoan"] = "Nhân viên tài chính";
+          
+            <div class="thongtinchitiet">
+                <button class="close-button" onclick="">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <h5>Thông tin chi tiết nhân viên</h5>
+                @using (Html.BeginForm("capnhapthongtin", "ADMIN", FormMethod.Post))
+                {
+                    <p>ID: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.MANHANVIENTAICHINH, new { @readonly = "readonly" })</p>
+                    <p>Tên: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.TENNHANVIENTAICHINH, new { @required = "required" })</p>
+                    <p>Tuổi: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.TUOI, new { @required = "required" })</p>
+                    <p>Địa chỉ: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.DIACHI, new { @required = "required" })</p>
+                    <p>Số điện thoại: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.SDT, new { @required = "required" })</p>
+                    <p>Số CCCD: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.SOCCCD, new { @required = "required" })</p>
+                    <p>Tên Đăng Nhập: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.TENDANGNHAP, new {@readonly = "readonly"  })</p>
+                    <p>Mật khẩu: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.MATKHAU, new {  })</p>
+                    <p>Ngày vào làm: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.NGAYVAOLAM, new { @required = "required" })</p>
+                    <p>Trạng thái: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.TRANGTHAI, new { @required = "required" })</p>
+                    <p>Ngày nghỉ làm: @Html.TextBoxFor(m => m.nHANVIENTAICHINHs.NGAYNGHILAM, new {})</p>
+                    <button class="btn btnluu btn-primary" id="save-button" type="submit">Lưu</button> <!-- Nút Lưu -->
+                }
+            </div>
+        }
+        else if (Model.nHANVIENSANXUATs != null)
+        {
+        TempData["kiemtraloaitaikhoan"] = "Nhân viên sản xuất";
+    <div class="thongtinchitiet">
+        <button class="close-button" onclick="">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <h5>Thông tin chi tiết nhân viên</h5>
+        @using (Html.BeginForm("capnhapthongtin", "ADMIN", FormMethod.Post))
+        {
+            <p>ID: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.MANHANVIENSANXUAT, new { @readonly = "readonly" })</p>
+            <p>Tên: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.TENNHANVIENSANXUAT, new { @required = "required" })</p>
+            <p>Tuổi: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.TUOI, new { @required = "required" })</p>
+            <p>Địa chỉ: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.DIACHI, new { @required = "required" })</p>
+            <p>Số điện thoại: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.SDT, new { @required = "required" })</p>
+            <p>Số CCCD: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.SOCCCD, new { @required = "required" })</p>
+            <p>Tên Đăng Nhập: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.TENDANGNHAP, new { @readonly = "readonly" })</p>
+            <p>Mật khẩu: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.MATKHAU, new { })</p>
+            <p>Ngày vào làm: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.NGAYVAOLAM, new { @readonly = "readonly" })</p>
+            <p>Trạng thái: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.TRANGTHAI, new { @required = "required" })</p>
+            <p>Ngày nghỉ làm: @Html.TextBoxFor(m => m.nHANVIENSANXUATs.NGAYNGHILAM, new { })</p>
+            <button class="btn btnluu btn-primary" id="save-button" type="submit">Lưu</button> <!-- Nút Lưu -->
+        }
+    </div>
+        }
+        else if (Model.nHANVIENVANCHUYENs != null)
+        {
+        TempData["kiemtraloaitaikhoan"] = "Nhân viên vận chuyển";
+    <div class="thongtinchitiet">
+        <button class="close-button" onclick="">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <h5>Thông tin chi tiết nhân viên</h5>
+        @using (Html.BeginForm("capnhapthongtin", "ADMIN", FormMethod.Post))
+        {
+            <p>ID: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.MANHANVIENVANCHUYEN, new { @readonly = "readonly" })</p>
+            <p>Tên: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.TENNHANVIENVANCHUYEN, new { @required = "required" })</p>
+            <p>Tuổi: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.TUOI, new { @required = "required" })</p>
+            <p>Địa chỉ: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.DIACHI, new { @required = "required" })</p>
+            <p>Số điện thoại: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.SDT, new { @required = "required" })</p>
+            <p>Số CCCD: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.SOCCCD, new { @required = "required" })</p>
+            <p>Tên Đăng Nhập: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.TENDANGNHAP, new { @readonly = "readonly" })</p>
+            <p>Mật khẩu: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.MATKHAU, new { })</p>
+            <p>Ngày vào làm: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.NGAYVAOLAM, new { @required = "required" })</p>
+            <p>Trạng thái: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.TRANGTHAI, new { @required = "required" })</p>
+            <p>Ngày nghỉ làm: @Html.TextBoxFor(m => m.nHANVIENVANCHUYENs.NGAYNGHILAM, new { })</p>
+            <button class="btn btnluu btn-primary" id="save-button" type="submit">Lưu</button> <!-- Nút Lưu -->
+        }
+    </div>
+        }
+        else
+        {
+            TempData["kiemtraloaitaikhoan"] = "Khách hàng";
+    <div class="thongtinchitiet">
+        <button class="close-button" onclick="">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <h5>Thông tin chi tiết khách hàng</h5>
+        @using (Html.BeginForm("capnhapthongtin", "ADMIN", FormMethod.Post))
+        {
+            <p>ID: @Html.TextBoxFor(m => m.kHACHHANGs.MAKHACHHANG, new { @readonly = "readonly" })</p>
+            <p>Tên: @Html.TextBoxFor(m => m.kHACHHANGs.HOVATEN, new { @required = "required" })</p>
+            <p>Tuổi: @Html.TextBoxFor(m => m.kHACHHANGs.TUOI, new { @required = "required" })</p>
+            <p>Địa chỉ: @Html.TextBoxFor(m => m.kHACHHANGs.TINH, new { @required = "required" })</p>
+            <p>Số điện thoại: @Html.TextBoxFor(m => m.kHACHHANGs.SDT, new { @required = "required" })</p>
+            <p>Tên Đăng Nhập: @Html.TextBoxFor(m => m.kHACHHANGs.TENDANGNHAP, new { @readonly = "readonly" })</p>
+            <p>Mật khẩu: @Html.TextBoxFor(m => m.kHACHHANGs.MATKHAU, new { })</p>
+            <p>Cấp độ: @Html.TextBoxFor(m => m.kHACHHANGs.CAPDO, new { @required = "required" })</p>
+            <button class="btn btnluu btn-primary" id="save-button" type="submit">Lưu</button> <!-- Nút Lưu -->
+        }
+    </div>
+        }
+        <script src="~/Scripts/quanly.js"></script>
+</body>
+</html>

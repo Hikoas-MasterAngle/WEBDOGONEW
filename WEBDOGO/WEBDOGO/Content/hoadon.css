@@ -1,0 +1,197 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Redressed&family=Ubuntu:wght@400;700&display=swap");
+
+:root {
+  --bg-clr: #b3b3b3;
+  --white: #fff;
+  --invoice-bg: #e7e7e9;
+  --primary-clr: #2f2929;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--primary-clr);
+  padding: 0 20px;
+}
+
+.main_title{
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: var(--primary-clr);
+  margin-bottom: 10px;
+}
+
+.p_title {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.p_title > span{
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.text_right {
+  text-align: right;
+}
+
+.text_center {
+  text-align: center;
+}
+
+.i_row{
+  display: flex;
+}
+
+.invoice {
+  width: 800px;
+  max-width: 100%;
+  height: auto;
+  background: var(--white);
+  margin: 20px auto;
+  border: 1px solid black;
+}
+
+.invoice > div{
+  width: 100%;
+  padding: 40px;
+}
+
+.invoice .invoice_info .i_row,
+.invoice .invoice_payment .i_row{
+  justify-content: space-between;
+}
+
+.invoice .invoice_info,
+.invoice .invoice_terms,
+.invoice .invoice_payment{
+  background: var(--invoice-bg);
+}
+
+.invoice .invoice_payment{
+  border-bottom: 1px dashed var(--primary-clr);
+}
+
+.invoice .invoice_info > div:not(:last-child){
+  margin-bottom: 40px;
+} 
+
+.invoice .invoice_info h1{
+  font-size: 38px;
+  line-height: 44px;
+  color: var(--primary-clr);
+}
+
+    .invoice .w_15 {
+        padding-top: 10px;
+        width: 50%;
+    }
+
+.invoice .w_50 {
+  width: 50%;
+}
+
+.invoice .w_55 {
+  width: 55%;
+}
+
+    .invoice .w_15 button {
+        padding: 2px;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+
+        .invoice .w_15 button:hover {
+            cursor: pointer;
+        }
+
+.invoice .i_table .i_row {
+  padding: 12px 10px; 
+  border: 1px dashed var(--primary-clr); 
+  border-bottom: 0;
+}
+
+.invoice .i_table .i_table_foot .i_row:last-child{
+  border-bottom: 1px dashed var(--primary-clr);  
+}
+
+.invoice .i_table .i_row p{
+  margin: 0;
+  font-weight: 700;
+}
+
+.invoice .i_table .i_table_head .i_row,
+.invoice .i_table .i_table_foot .grand_total_wrap{
+  background: var(--invoice-bg);
+}
+
+.invoice .invoice_right .terms{
+  margin: 0;
+}
+
+.lienhe .buttonlienhedathang {
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    background-color: black;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+    .lienhe .buttonlienhedathang:hover {
+        background-color: #48809B;
+        color: white;
+    }
+
+.chitietvanchuyen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 2; /* Đảm bảo div nằm trên lớp nền mờ */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+
+.chitietvanchuyentieude button svg {
+    width: 40px;
+    color: red;
+}
+
+.chitietvanchuyentieude button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin-left: 97%;
+    position: absolute;
+}
+
+.chitietvanchuyentieude {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Nền mờ với màu đen và độ trong suốt */
+    z-index: 1; /* Đảm bảo lớp này nằm phía dưới div cần hiển thị */
+    display: none;
+}

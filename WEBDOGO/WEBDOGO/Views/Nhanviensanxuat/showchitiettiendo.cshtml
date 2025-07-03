@@ -1,0 +1,150 @@
+﻿@model WEBDOGO.Models.quanlttiendo
+
+@{
+    Layout = null;
+
+    List<SelectListItem> nhanviensx = new List<SelectListItem>();
+
+    foreach (var item in ViewBag.nhanviensx)
+    {
+        nhanviensx.Add(new SelectListItem
+        {
+            Text = item.TENNHANVIENSANXUAT,
+            Value = item.MANHANVIENSANXUAT.ToString()
+        });
+    }
+
+    List<SelectListItem> giaidoansanxuat = new List<SelectListItem>
+    {
+        new SelectListItem {Value = "Lập kế hoạch và thiết kế", Text = "Lập kế hoạch và thiết kế"},
+        new SelectListItem {Value = "Xử lý nguyên liệu", Text = "Xử lý nguyên liệu"},
+        new SelectListItem {Value = "Gia công sản phẩm", Text = "Gia công sản phẩm"},
+        new SelectListItem {Value = "Xử lý bề mặt", Text = "Xử lý bề mặt"},
+        new SelectListItem {Value = "Lắp ráp", Text = "Lắp ráp"},
+        new SelectListItem {Value = "Hoàn thiện",Text= "Hoàn thiện"}
+    };
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sản Phẩm Theo Yêu Cầu</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/chitietquanlyyeucau.css")?v=@DateTime.Now.Ticks">
+</head>
+<body>
+    <div class="container">
+        <h2>Phân công nhân viên cho đơn hàng</h2>
+        @using (Html.BeginForm("luutiendosanxuat", "Nhanviensanxuat", FormMethod.Post))
+        {
+            <div class="form-row">
+                <!-- Cột 1 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="MATIENDOSANXUAT">Mã tiến độ sản xuất:</label>
+                        @Html.TextBoxFor(m => m.sTIENDOSANXUAT.MATIENDOSANXUAT, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYSANXUAT">Ngày sản xuất:</label>
+                        @Html.TextBoxFor(m => m.sTIENDOSANXUAT.NGAYSANXUAT, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYDUKIEN">Ngày dự kiến:</label>
+                        <input type="datetime" value="@Model.sTIENDOSANXUAT.NGAYDUKIENHOANTHANH" readonly />
+                        @Html.TextBoxFor(m => m.sTIENDOSANXUAT.NGAYDUKIENHOANTHANH, new { @type = "date" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYHOANTHANH">Ngày hoàn thành:</label>
+                        <input type="datetime" value="@Model.sTIENDOSANXUAT.NGAYHOANTHANHTHUCTE" readonly />
+                        @Html.TextBoxFor(m => m.sTIENDOSANXUAT.NGAYHOANTHANHTHUCTE, new { @type = "date" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="GIAIDOANSANXUAT">Giai đoạn sản xuất:</label>
+                        @Html.DropDownListFor(m => m.sTIENDOSANXUAT.GIAIDOANSANXUAT, giaidoansanxuat, "Chọn giai đoạn sản xuất", new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <!-- Cột 2 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="MOTA">Mô Tả:</label>
+                        @Html.TextAreaFor(m => m.sTIENDOSANXUAT.MOTA, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="SOLUONG">Số lượng:</label>
+                        @Html.TextBoxFor(m => m.sTIENDOSANXUAT.SOLUONG, new { @required = "required" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="MASANPHAMTHEOYEUCAU">Mã sản phẩm theo yêu cầu:</label>
+                        @Html.TextBoxFor(m => m.sTIENDOSANXUAT.MASANPHAMTHEOYEUCAU, new { @readonly = "readonly" })
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trường Mô Tả Sản Phẩm -->
+
+            <div class="form-group">
+                <label for="MANHANVIEN">Mã nhân viên:</label>
+                @Html.DropDownListFor(m => m.sTIENDOSANXUAT.MANHANVIENSANXUAT, nhanviensx, "Chọn nhân viên sản xuất", new { @class = "form-control" })
+            </div>
+
+            <div class="form-group" hidden>
+                <label for="anhsanpham">anhsanpham:</label>
+                @Html.TextBoxFor(m => m.sTIENDOSANXUAT.ANHMINHHOA, new { @readonly = "readonly" })
+            </div>
+
+            <div class="form-group" hidden>
+                <label for="nghiemthu">nghiemthu:</label>
+                @Html.TextBoxFor(m => m.sTIENDOSANXUAT.NGHIEMTHU, new { @readonly = "readonly" })
+            </div>
+
+            <div class="form-group">
+                <label for="ANHSANPHAM">Ảnh Sản Phẩm:</label>
+                <img style="width: 200px" src="@Model.sTIENDOSANXUAT.ANHMINHHOA" />
+            </div>
+            <div class="form-group full-width">
+                <button type="submit" class="btn-save" style="background-color: mediumturquoise">Cập nhập</button>
+            </div>
+            <!-- Nút Lưu -->
+            if (Model.sTIENDOSANXUAT.NGHIEMTHU == "Chờ xác nhận")
+            {
+                <div class="form-group full-width">
+                    <a href="@Url.Action("pheduyet","Nhanviensanxuat", new {matiendosanxuat = Model.sTIENDOSANXUAT.MATIENDOSANXUAT, tenkh1 = Model.tenkhachhang, tennv1 = Model.tennhanviensanxuat})" style="width: 80%; background-color: forestgreen" class="btn-save">Phê duyệt</a>
+                    <a href="@Url.Action("khongpheduyet","Nhanviensanxuat", new {matiendosanxuat = Model.sTIENDOSANXUAT.MATIENDOSANXUAT, tenkh1 = Model.tenkhachhang, tennv1 = Model.tennhanviensanxuat})" style="width: 80%; background-color: darkred" class="btn-save">Không phê duyệt</a>
+                </div>
+            }
+            else if (Model.sTIENDOSANXUAT.NGHIEMTHU == "Phê duyệt")
+            {
+                <div class="form-group full-width">
+                    <button type="submit" class="btn-save">Đến giai đoạn tiếp theo</button>
+                </div>
+            }
+            else if (Model.sTIENDOSANXUAT.NGHIEMTHU == "Đang chờ")
+            {
+                <div class="form-group full-width">
+                    <button disabled type="submit" class="btn-save">Vui lòng chờ nhân viên</button>
+                </div>
+            }
+            else if (Model.sTIENDOSANXUAT.GIAIDOANSANXUAT == "Hoàn thiện")
+            {
+                <div class="form-group full-width">
+                    <a href="@Url.Action("showyeucausanxuat","Nhanviensanxuat")" type="submit" class="btn-save">Quay lại</a>
+                </div>
+            }
+            else if (Model.sTIENDOSANXUAT.NGHIEMTHU == "Phân công")
+            {
+                <div class="form-group full-width">
+                    <button type="submit" class="btn-save">Phân công nhân viên</button>
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>
+

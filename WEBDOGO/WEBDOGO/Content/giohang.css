@@ -1,0 +1,203 @@
+.sanphamcon {
+    display: flex;
+    align-items: center;
+}
+
+.alert-success {
+    margin-top: 44px;
+    position: absolute;
+    visibility: hidden;
+    z-index: 999;
+    height: 100px;
+    width: 370px;
+    background-color: #8FBF2F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0px;
+}
+
+.success {
+    width: 70px;
+    color: white;
+    margin-right: 20px;
+}
+
+
+.sanphamcon .btnxoasanpham {
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: #b3b3b3;
+}
+
+.sanphamcon .btnxoasanpham:hover {
+    color: rgb(255, 67, 67);
+    cursor: pointer;
+}
+
+.sanphamcon .anhsanphamtronggiohang {
+    width: 75px;
+    height: 75px;
+    margin-left: 10px;
+}
+
+.sanphamcon .tensanphamtronggiohang {
+    margin-top: 15px;
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+.giasanphamtronggiohang {
+    margin-top: 3vh;
+    font-weight: bold;
+}
+
+.soluongsanphamtronggiohang {
+    border: none !important;
+    display: flex;
+}
+
+.giam {
+    width: 30px;
+    height: 30px;
+    background-color: #ECECEC;
+    outline: none;
+    border: 1px solid #b3b3b3;
+    text-align: center;
+}
+
+.giam svg {
+    width: 10px;
+}
+
+.them {
+    width: 30px;
+    height: 30px;
+    background-color: #ECECEC;
+    outline: none;
+    border: 1px solid #b3b3b3;
+}
+
+.them svg {
+    width: 10px;
+}
+
+.textthemsoluong {
+    width: 40px;
+    height: 30px;
+    border: 1px solid #b3b3b3;
+    text-align: center;
+}
+
+.tongcongcuamoisanpham {
+    margin-top: 3vh;
+    font-weight: bold;
+}
+
+.tieptucxemsanpham {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 40px;
+    color: #33C9DB;
+    border: 3px solid #33C9DB;
+    outline: none;
+    background-color: transparent;
+}
+
+.tieptucxemsanpham:hover {
+    color: white;
+    background-color: #33C9DB;
+}
+
+.next {
+    width: 30px;
+}
+
+
+.tieptucxemsanpham a {
+    font-weight: bold;
+    color: #33C9DB;
+    text-decoration: none;
+}
+
+.tieptucxemsanpham a:hover {
+    color: white;
+}
+
+.alltungsanpham {
+    margin-top: 20px;
+    border-right: 1px solid #b3b3b3;
+}
+
+.phanbentongthanhtoan {
+    padding-left: 30px;
+}
+
+.nametongsoluong {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    padding-left: 20px;
+    font-weight: bold;
+    color: white;
+    height: 50px;
+    background-color: #212529;
+}
+
+.tongcongthanhtoan {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #b3b3b3;
+}
+
+.giatongcong1 {
+    right: 20px;
+    position: absolute;
+    font-weight: bold;
+}
+
+.giaohang {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #b3b3b3;
+}
+
+.giaohang .tiengiaohang {
+    right: 20px;
+    position: absolute;
+    font-weight: bold;
+}
+
+.tongcongfullthanhtoan {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #b3b3b3;
+}
+
+.tongsotiencanthanhtoancuaca2 {
+    right: 20px;
+    font-weight: bold;
+    position: absolute;
+}
+
+.tienhanhthanhtoan {
+    width: 100%;
+    border: none;
+    height: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    background-color: #48809B;
+}
+
+.tienhanhthanhtoan:focus {
+    outline: none;
+    cursor: pointer;
+}

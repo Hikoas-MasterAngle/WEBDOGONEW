@@ -1,0 +1,89 @@
+﻿@model WEBDOGO.Models.chitiethoadon_sanpham
+@{
+    Layout = null;
+
+    List<SelectListItem> trangthaiduyet = new List<SelectListItem>()
+    {
+   new SelectListItem { Text = "đã thanh toán", Value = "đã thanh toán" },
+   new SelectListItem { Text = "Chưa thanh toán", Value = "Chưa thanh toán" },
+   };
+
+    List<SelectListItem> thanhtoan = new List<SelectListItem>()
+ {
+new SelectListItem { Text = "Thanh toán online", Value = "Thanh toán online" },
+new SelectListItem { Text = "Thanh toán khi nhận hàng", Value = "Thanh toán khi nhận hàng" },
+};
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Sản Phẩm Theo Yêu Cầu</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/chitietquanlyyeucau.css")?v=@DateTime.Now.Ticks">
+</head>
+<body>
+    <div class="container">
+        <h2>Chỉnh sửa hóa đơn</h2>
+        @using (Html.BeginForm("chinhsuachitiethoadon", "Nhanvientaichinh", FormMethod.Post))
+        {
+            <div class="form-row">
+                <!-- Cột 1 -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="SOHOADON">Số hóa đơn:</label>
+                        @Html.TextBoxFor(m => m.hOADON.SOHOADON, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="MAHOADON">Mã hóa đơn:</label>
+                        @Html.TextBoxFor(m => m.hOADON.MAHOADON, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TENKHACHHANG">Tên khách hàng:</label>
+                        @Html.TextBoxFor(m => m.kHACHHANG.HOVATEN, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group" hidden>
+                        <label for="MAKHACHHANG">Mã khách hàng:</label>
+                        @Html.TextBoxFor(m => m.hOADON.MAKHACHHANG, new { @readonly = "readonly" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TONGTIEN">Tổng tiền:</label>
+                        @Html.TextBoxFor(m => m.hOADON.TONGTIEN, new { @required = "required" })
+                    </div>
+                </div>
+
+                <!-- Cột 2 -->
+                <div class="form-column">
+
+                    <div class="form-group">
+                        <label for="TRANGTHAITHANHTOAN">Trạng thái thanh toán:</label>
+                        @Html.DropDownListFor(m => m.hOADON.TRANGTHAITHANHTOAN, trangthaiduyet, "Chọn trạng thái thanh toán", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PHUONGTHUCTHANHTOAN">Phương thức thanh toán:</label>
+                        @Html.DropDownListFor(m => m.hOADON.PHUONGTHUCTHANHTOAN, thanhtoan, "Chọn trạng thái thanh toán", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="NGAYLAP">Ngày lập:</label>
+                        <input type="datetime" readonly value="@Model.hOADON.NGAYLAP" />
+
+                        <label for="NGAYLAP">Chỉnh sửa ngày lập:</label>
+                        @Html.TextBoxFor(m => m.hOADON.NGAYLAP, new { @class = "form-control", @type = "date"})
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nút Lưu -->
+            <div class="form-group full-width">
+                <button type="submit" class="btn-save">Lưu</button>
+            </div>
+        }
+    </div>
+</body>
+</html>

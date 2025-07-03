@@ -1,0 +1,221 @@
+.dashboard-left {
+    position: fixed;
+    overflow-y: auto;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    background-color: #F7F7F7;
+    box-shadow: rgb(0 0 0 / 13%) 0px 1.6px 8.6px 0px, rgb(0 0 0 / 34%) 0px 0.3px 0.9px 0px;    height: 100vh;
+    transition: all .5s ease-in-out;
+}
+
+.dashboard-left.active {
+    left: 0;
+}
+
+.dashboard-left h2 {
+    margin-top: 20px;
+    margin-left: 2vh;
+    font-size: 18px;
+}
+
+.dashboard-left .danhmuccon ul {
+    margin: 20px 20px;
+    padding-top: 5px;
+    padding-left: 20px;
+    border: 1px solid #e0e0e0;
+    background-color: #F5F5F5;
+}
+
+.dashboard-left .danhmuccon ul li {
+    padding-top: 15px;
+    list-style: none;
+    padding-bottom: 15px;
+    border-bottom:1px solid #e0e0e0;
+}
+
+.dashboard-left .danhmuccon ul li a {
+    text-decoration: none;
+    font-size: 14.5px;
+    color: black;
+}
+
+.dashboard-left .danhmuccon ul li a:hover {
+    color: #33C9DB;
+}
+
+.sanphamcuaphanloccon {
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    margin: 20px 20px;
+
+}
+
+.sanphamcuaphanloccon-con {
+    display: flex;
+    margin-top: 25px;
+    margin-left: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sanphamcuaphanloccon-con div {
+    display: flex;
+    align-items: center;
+}
+
+.sanphamcuaphanloccon-con img {
+    width: 80px;
+}
+
+.sanpham-noidungconcuasanpham {
+    margin-left: 20px;
+}
+
+.sanpham-noidungconcuasanpham a{
+    text-decoration: none;
+    margin-left: 20px;
+    color: rgb(83, 83, 83);
+}
+
+.sanpham-noidungconcuasanpham a:hover{
+    color: #33C9DB;
+    transition: all 0.5s ease;
+}
+
+.sanpham-noidungconcuasanpham .giasanphamcuaphanloc {
+    font-weight: bold;
+}
+
+.body2 {
+    margin: 20px;
+}
+
+.hienthiketqua-sapxep {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+}
+
+.hienthiketqua-sapxep p {
+    margin-top: 12px;
+    margin-right: 20px;
+}
+
+.hienthiketqua-sapxep select {
+    padding-left: 5px;
+}
+
+.sanpham {
+    width: 273px;
+    height: 377px;
+    padding: 10px 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    margin-right: 10px;
+}
+
+.sanpham:hover {
+    transition: all 0.2s ease;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.allnutchuyentrang {
+    display: flex;
+    justify-content: center;
+}
+
+.nutchuyentrang {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+    display: flex;             
+    justify-content: center;   
+    align-items: center;
+    border: none;       
+    cursor: pointer;           
+    font-size: 16px;
+}
+
+.nutchuyentrang:hover {
+    background-color: #4be5f7;
+    border: 1px solid #525252;
+}
+
+.nutchuyentrang:focus {
+    background-color: #4be5f7;
+    border: 1px solid #525252;
+    outline: none;
+}
+
+.size-6 {
+    width: 20px;
+}
+
+.sanpham a {
+    text-decoration: none;
+    color: rgb(83, 83, 83);
+}
+
+.allsanpham {
+    display: flex;
+    justify-content: center;
+}
+
+.allsanpham .tensanpham {
+    margin-top: 15px;
+}
+
+.allsanpham .giasanpham {
+    font-weight: bold;
+}
+
+.sanpham img {
+   width: 255px;
+   height: 255px;
+}
+
+
+.breadcrumb {
+    background-color: transparent;
+}
+
+.menuloc {
+    margin-top: 5px;
+}
+
+.menuloc button {
+    all: unset;
+    display: flex;
+    align-content: center;
+    gap: 10px;
+}
+
+.menuloc button:hover {
+    cursor: pointer;
+}
+
+.iconmenuloc {
+    width: 40px;
+}
+
+.menuloc p {
+    display: flex;
+    align-content: center;
+    margin-bottom: 0px;
+    flex-wrap: wrap !important;
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+
+
+.breadcrumb {
+    padding: 15px 0px;
+}
+
+.dropdown-toggle {
+    all: unset;
+}

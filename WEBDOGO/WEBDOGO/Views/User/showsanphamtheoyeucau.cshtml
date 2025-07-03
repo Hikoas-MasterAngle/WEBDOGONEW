@@ -1,0 +1,303 @@
+﻿@model WEBDOGO.Models.SANPHAMTHEOYEUCAU
+@{
+    ViewBag.Title = "showsanphamtheoyeucau";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+    List<SelectListItem> loaisanpham = new List<SelectListItem>
+{
+        new SelectListItem { Value = "Sản phẩm đặc biệt", Text = "Sản phẩm đặc biệt" },
+        new SelectListItem { Value = "Quà tặng", Text = "Quà tặng" },
+        new SelectListItem { Value = "Gỗ liền tấm", Text = "Gỗ liền tấm" },
+        new SelectListItem { Value = "Sập gỗ, phản gỗ liền tấm", Text = "Sập gỗ, phản gỗ liền tấm" },
+        new SelectListItem { Value = "Lục bình gỗ", Text = "Lục bình gỗ" },
+        new SelectListItem { Value = "Bình hoa gỗ", Text = "Bình hoa gỗ" },
+        new SelectListItem { Value = "Tượng gỗ phong thủy", Text = "Tượng gỗ phong thủy" },
+        new SelectListItem { Value = "Linh vật phong thủy", Text = "Linh vật phong thủy" },
+        new SelectListItem { Value = "Tranh phong thủy", Text = "Tranh phong thủy" },
+        new SelectListItem { Value = "Đồ thờ", Text = "Đồ thờ" },
+        new SelectListItem { Value = "Gỗ mỹ nghệ khác", Text = "Gỗ mỹ nghệ khác" },
+        new SelectListItem { Value = "Nội thất phòng khách", Text = "Nội thất phòng khách" },
+        new SelectListItem { Value = "Nội thất phòng ngủ", Text = "Nội thất phòng ngủ" },
+        new SelectListItem { Value = "Nhà bếp – Phòng ăn", Text = "Nhà bếp – Phòng ăn" }
+    };
+
+    List<SelectListItem> vatlieu = new List<SelectListItem>
+{
+        new SelectListItem { Value = "Gỗ Cẩm Lai", Text = "Gỗ Cẩm Lai" },
+        new SelectListItem { Value = "gỗ hương đỏ đăklak", Text = "gỗ hương đỏ đăklak" },
+        new SelectListItem { Value = "Gỗ Samanea", Text = "Gỗ Samanea" },
+        new SelectListItem { Value = "Gỗ hương đỏ", Text = "Gỗ hương đỏ" },
+    };
+
+    List<SelectListItem> maugo = new List<SelectListItem>
+    {
+        new SelectListItem {Value = "Màu gỗ tự nhiên" , Text = "Màu gỗ tự nhiên"},
+        new SelectListItem {Value = "Màu nâu" , Text = "Màu nâu"},
+        new SelectListItem {Value = "Màu vàng" , Text = "Màu vàng"},
+        new SelectListItem {Value = "Màu đỏ" , Text = "Màu đỏ"},
+        new SelectListItem {Value = "Màu đen" , Text = "Màu đen"},
+        new SelectListItem {Value = "Màu trắng" , Text = "Màu trắng"},
+        new SelectListItem {Value = "Màu xám" , Text = "Màu xám"},
+        new SelectListItem {Value = "Màu gỗ sơn phủ bóng" , Text = "Màu gỗ sơn phủ bóng"},
+    };
+}
+
+@section Styles {
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/sanphamtheoyeucau.css")?v=@DateTime.Now.Ticks">
+}
+
+
+<div class="overlay"></div>
+
+<!-- Phần Sản phẩm theo yêu cầu -->
+<div class="container allsanphamtheoyeucau mt-5">
+    <div class="form-container">
+        <h2>Yêu cầu sản phẩm</h2>
+        @using (Html.BeginForm("themsanphamtheoyeucau", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="loaisanpham">Loại sản phẩm:</label>
+                    @Html.DropDownListFor(m => m.LOAISANPHAM, loaisanpham, "Chọn loại sản phẩm", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="soluong">Số lượng:</label>
+                    @Html.TextBoxFor(m => m.SOLUONG, new { @required = "required", @class = "inputemail", @type = "number" })
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="chieudai">Chiều dài (cm):</label>
+                    @Html.TextBoxFor(m => m.CHIEUDAI, new { @required = "required", @type = "number" })
+                </div>
+
+                <div class="form-group">
+                    <label for="chieucao">Chiều cao (cm):</label>
+                    @Html.TextBoxFor(m => m.CHIEUCAO, new { @required = "required", @type = "number" })
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="chieurong">Chiều rộng (cm):</label>
+                    @Html.TextBoxFor(m => m.CHIEURONG, new { @required = "required", @type = "number" })
+                </div>
+
+                <div class="form-group">
+                    <label for="vatlieu">Vật liệu:</label>
+                    @Html.DropDownListFor(m => m.VATLIEU, vatlieu, "Chọn vật liệu", new { @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="mausac">Màu sắc:</label>
+                    @Html.DropDownListFor(m => m.MAUSAC, maugo, "Chọn màu gỗ", new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <label for="motasanpham">Mô tả sản phẩm:</label>
+                    @Html.TextAreaFor(m => m.MOTASANPHAM, new { @required = "required", @type = "text" })
+                </div>
+
+                <div class="form-group">
+                    <label for="anhminhhoa">Ảnh sản phẩm minh họa:</label>
+                    <input type="file" name="HinhAnh" class="form-control" required/>
+                </div>
+            </div>
+            <button type="submit">Gửi yêu cầu</button>
+        }
+    </div>
+</div>
+
+<!-- End Phần Sản phẩm theo yêu cầu -->
+<!-- Phần Sản phẩm đã yêu cầu -->
+<div class="mt-5">
+    <h2>Danh sách sản phẩm đã yêu cầu</h2>
+    <div class="table-container">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Loại Sản Phẩm</th>
+                    <th>Số Lượng</th>
+                    <th>Chiều Dài (m)</th>
+                    <th>Chiều Cao (m)</th>
+                    <th>Chiều Rộng (m)</th>
+                    <th>Vật Liệu</th>
+                    <th>Màu Sắc</th>
+                    <th style="width: 300px;">Mô Tả</th>
+                    <th style="width: 100px">Tình Trạng</th>
+                    <th>Vận Chuyển</th>
+                    <th>Tiến Độ Sản Xuất</th>
+                    <th>Chi phí</th>
+                    <th>Chấp nhận đơn hàng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.danhsachsanphamdadat != null)
+                {
+                    foreach (var item in ViewBag.danhsachsanphamdadat)
+                    {
+                        <tr>
+                            <td>@item.SanPham.LOAISANPHAM</td>
+                            <td>@item.SanPham.SOLUONG</td>
+                            <td>@item.SanPham.CHIEUDAI</td>
+                            <td>@item.SanPham.CHIEUCAO</td>
+                            <td>@item.SanPham.CHIEURONG</td>
+                            <td>@item.SanPham.VATLIEU</td>
+                            <td>@item.SanPham.MAUSAC</td>
+                            <td>@item.SanPham.MOTASANPHAM</td>
+                            @if (item.SanPham.TRANGTHAIDUYET != "Hủy đơn hàng")
+                            {
+                                <td><p class="duyet">@item.SanPham.TRANGTHAIDUYET</p></td>
+                            }
+                            else
+                            {
+                                <td><p class="duyet" style="background-color: darkred">@item.SanPham.TRANGTHAIDUYET</p></td>
+                            }
+                            <td>
+                                @if (item.VANCHUYENs != null)
+                                {
+                                    <a class="vanchuyen" href="@Url.Action("ChitietVanChuyen", "User", new { mavc = item.VANCHUYENs.MAVANCHUYEN })">
+                                        @item.VANCHUYENs.TRANGTHAIVANCHUYEN
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="vanchuyen" href="#">
+                                        Không có
+                                    </a>
+                                }
+                            </td>
+                            <td>
+                                @if (item.TIENDOSANXUATs != null)
+                                {
+                                    <a class="tiendosanxuat" href="@Url.Action("chitiettiendosanxuat", "User", new { matd = item.TIENDOSANXUATs.MATIENDOSANXUAT })">
+                                        @item.TIENDOSANXUATs.GIAIDOANSANXUAT
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="tiendosanxuat" href="#">
+                                        Không có
+                                    </a>
+                                }
+                            </td>
+                            <td>
+                                @if (item.SanPham.TONGSOTIENSANXUAT != null)
+                                {
+                                    @item.SanPham.TONGSOTIENSANXUAT
+                                }
+                                else
+                                {
+                                    <p>Chưa có</p>
+                                }
+                            </td>
+                            <td class="allchapnhan">
+                                @if (item.SanPham.TRANGTHAIDUYET == "Duyệt" && item.SanPham.KHACHHANGCHAPNHAN == "Chưa có")
+                                {
+                                    <button class="chapnhan" onclick="location.href='@Url.Action("chapnhandonhang", new {masp = item.SanPham.MASANPHAMTHEOYEUCAU})'">Chấp nhận</button>
+                                    <button class="khongchapnhan" onclick="location.href='@Url.Action("khongchapnhandonhang", new {masp = item.SanPham.MASANPHAMTHEOYEUCAU})'">Hủy đơn</button>
+                                }
+                                else if (item.SanPham.TRANGTHAIDUYET == "Duyệt" && item.SanPham.KHACHHANGCHAPNHAN == "Chấp nhận")
+                                {
+                                    <button style="background-color: forestgreen; border-radius: 10px; padding: 10px; color: white" disabled>Đã chấp nhận</button>
+                                }
+                                else if (item.SanPham.TRANGTHAIDUYET == "Hủy đơn hàng" && item.SanPham.KHACHHANGCHAPNHAN == "Không chấp nhận")
+                                {
+                                    <button style="background-color: darkred; border-radius: 10px; padding: 10px; color:white" disabled>Không chấp nhận</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+            {
+
+            }
+                <!-- Thêm các sản phẩm khác ở đây -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- End Phần Sản phẩm đã yêu cầu -->
+
+<!-- Chi tiết vận chuyển -->
+<div class="container allsanphamtheoyeucau mt-5 chitietvanchuyen">
+    <div class="form-container">
+        <div class="chitietvanchuyentieude">
+            <h2>Vận chuyển của đơn hàng</h2>
+            <button class="closechitietvanchuyen">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+            </button>
+        </div>
+        <div class="table-container">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ngày bắt đầu gửi</th>
+                        <th>Ngày dữ kiến được giao</th>
+                        <th>Phương thức vận chuyển</th>
+                        <th>Tổng số tiền</th>
+                        <th>Trạng thái vận chuyển</th>
+                        <th>Tên nhân viên vận chuyển</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Không có</td>
+                        <td>Không có</td>
+                        <td>Không có</td>
+                        <td>Không có</td>
+                        <td><p class="vanchuyen">Không có</p></td>
+                        <td>Không có</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Chi tiết tiến độ sản xuất -->
+<div class="container allsanphamtheoyeucau mt-5 chitietsanxuat">
+    <div class="form-container">
+        <div class="chitietsanxuattieude">
+            <h2>Tiến độ của đơn hàng</h2>
+            <button class="closechitietsanxuat">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+            </button>
+        </div>
+        <div class="table-container">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ngày sản xuất</th>
+                        <th>Ngày dự kiến hoàn thành</th>
+                        <th>Ngày hoàn thành</th>
+                        <th>Giai đoạn sản xuất</th>
+                        <th>Số lượng</th>
+                        <th>Tên nhân viên sản xuất</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Không có</td>
+                        <td>Không có</td>
+                        <td>Không có</td>
+                        <td><p class="tiendosanxuat">Không có</p></td>
+                        <td>Không có</td>
+                        <td>Không có</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="@Url.Content("~/Scripts/sanphamtheoyeucau.js")?v=@DateTime.Now.Ticks" defer></script>

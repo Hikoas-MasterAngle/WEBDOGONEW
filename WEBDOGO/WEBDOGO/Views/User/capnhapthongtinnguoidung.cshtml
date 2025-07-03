@@ -1,0 +1,143 @@
+﻿@model WEBDOGO.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Cập Nhật Thông Tin Người Dùng";
+    Layout = "~/Views/Shared/_layouttrangchu.cshtml";
+
+    List<SelectListItem> tinhthanh = new List<SelectListItem>
+    {
+        new SelectListItem { Text = "An Giang", Value = "An Giang" },
+        new SelectListItem { Text = "Bà Rịa - Vũng Tàu", Value = "Bà Rịa - Vũng Tàu" },
+        new SelectListItem { Text = "Bắc Giang", Value = "Bắc Giang" },
+        new SelectListItem { Text = "Bắc Kạn", Value = "Bắc Kạn" },
+        new SelectListItem { Text = "Bạc Liêu", Value = "Bạc Liêu" },
+        new SelectListItem { Text = "Bắc Ninh", Value = "Bắc Ninh" },
+        new SelectListItem { Text = "Bến Tre", Value = "Bến Tre" },
+        new SelectListItem { Text = "Bình Định", Value = "Bình Định" },
+        new SelectListItem { Text = "Bình Dương", Value = "Bình Dương" },
+        new SelectListItem { Text = "Bình Phước", Value = "Bình Phước" },
+        new SelectListItem { Text = "Bình Thuận", Value = "Bình Thuận" },
+        new SelectListItem { Text = "Cà Mau", Value = "Cà Mau" },
+        new SelectListItem { Text = "Cần Thơ", Value = "Cần Thơ" },
+        new SelectListItem { Text = "Cao Bằng", Value = "Cao Bằng" },
+        new SelectListItem { Text = "Đà Nẵng", Value = "Đà Nẵng" },
+        new SelectListItem { Text = "Đắk Lắk", Value = "Đắk Lắk" },
+        new SelectListItem { Text = "Đắk Nông", Value = "Đắk Nông" },
+        new SelectListItem { Text = "Điện Biên", Value = "Điện Biên" },
+        new SelectListItem { Text = "Đồng Nai", Value = "Đồng Nai" },
+        new SelectListItem { Text = "Đồng Tháp", Value = "Đồng Tháp" },
+        new SelectListItem { Text = "Gia Lai", Value = "Gia Lai" },
+        new SelectListItem { Text = "Hà Giang", Value = "Hà Giang" },
+        new SelectListItem { Text = "Hà Nam", Value = "Hà Nam" },
+        new SelectListItem { Text = "Hà Nội", Value = "Hà Nội" },
+        new SelectListItem { Text = "Hà Tĩnh", Value = "Hà Tĩnh" },
+        new SelectListItem { Text = "Hải Dương", Value = "Hải Dương" },
+        new SelectListItem { Text = "Hải Phòng", Value = "Hải Phòng" },
+        new SelectListItem { Text = "Hậu Giang", Value = "Hậu Giang" },
+        new SelectListItem { Text = "Hòa Bình", Value = "Hòa Bình" },
+        new SelectListItem { Text = "Hưng Yên", Value = "Hưng Yên" },
+        new SelectListItem { Text = "Khánh Hòa", Value = "Khánh Hòa" },
+        new SelectListItem { Text = "Kiên Giang", Value = "Kiên Giang" },
+        new SelectListItem { Text = "Kon Tum", Value = "Kon Tum" },
+        new SelectListItem { Text = "Lai Châu", Value = "Lai Châu" },
+        new SelectListItem { Text = "Lâm Đồng", Value = "Lâm Đồng" },
+        new SelectListItem { Text = "Lạng Sơn", Value = "Lạng Sơn" },
+        new SelectListItem { Text = "Lào Cai", Value = "Lào Cai" },
+        new SelectListItem { Text = "Long An", Value = "Long An" },
+        new SelectListItem { Text = "Nam Định", Value = "Nam Định" },
+        new SelectListItem { Text = "Nghệ An", Value = "Nghệ An" },
+        new SelectListItem { Text = "Ninh Bình", Value = "Ninh Bình" },
+        new SelectListItem { Text = "Ninh Thuận", Value = "Ninh Thuận" },
+        new SelectListItem { Text = "Phú Thọ", Value = "Phú Thọ" },
+        new SelectListItem { Text = "Phú Yên", Value = "Phú Yên" },
+        new SelectListItem { Text = "Quảng Bình", Value = "Quảng Bình" },
+        new SelectListItem { Text = "Quảng Nam", Value = "Quảng Nam" },
+        new SelectListItem { Text = "Quảng Ngãi", Value = "Quảng Ngãi" },
+        new SelectListItem { Text = "Quảng Ninh", Value = "Quảng Ninh" },
+        new SelectListItem { Text = "Quảng Trị", Value = "Quảng Trị" },
+        new SelectListItem { Text = "Sóc Trăng", Value = "Sóc Trăng" },
+        new SelectListItem { Text = "Sơn La", Value = "Sơn La" },
+        new SelectListItem { Text = "Tây Ninh", Value = "Tây Ninh" },
+        new SelectListItem { Text = "Thái Bình", Value = "Thái Bình" },
+        new SelectListItem { Text = "Thái Nguyên", Value = "Thái Nguyên" },
+        new SelectListItem { Text = "Thanh Hóa", Value = "Thanh Hóa" },
+        new SelectListItem { Text = "Thừa Thiên Huế", Value = "Thừa Thiên Huế" },
+        new SelectListItem { Text = "Tiền Giang", Value = "Tiền Giang" },
+        new SelectListItem { Text = "TP. Hồ Chí Minh", Value = "TP. Hồ Chí Minh" },
+        new SelectListItem { Text = "Trà Vinh", Value = "Trà Vinh" },
+        new SelectListItem { Text = "Tuyên Quang", Value = "Tuyên Quang" },
+        new SelectListItem { Text = "Vĩnh Long", Value = "Vĩnh Long" },
+        new SelectListItem { Text = "Vĩnh Phúc", Value = "Vĩnh Phúc" },
+        new SelectListItem { Text = "Yên Bái", Value = "Yên Bái" }
+    };
+}
+
+@section Styles {
+    <link rel="stylesheet" href="@Url.Content("~/Content/capnhapthongtin.css")?v=@DateTime.Now.Ticks">
+}
+
+<!--Body Cập Nhật Thông Tin -->
+<div class="fullbody">
+    <div class="Titleinf">
+        <h1>Hồ Sơ Của Tôi</h1>
+    </div>
+
+    <!-- Hiển thị thông báo -->
+    @if (TempData["thongbao"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["thongbao"]
+        </div>
+    }
+
+    <!-- Sử dụng form HTML thông thường -->
+    @using (Html.BeginForm("capnhapthongtinnguoidung", "User", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="maininf">
+            <div class="upinf">
+                <div>
+                    <p>Tên Đăng Nhập:</p>
+                    @Html.TextBoxFor(m => m.TENDANGNHAP, new { @readonly = "readonly" })
+                </div>
+                <div>
+                    <p>Họ và Tên:</p>
+                    @Html.TextBoxFor(m => m.HOVATEN, new { @required = "required" })
+                </div>
+                <div>
+                    <p>Tuổi:</p>
+                    @Html.TextBoxFor(m => m.TUOI, new { @type = "number", @required = "required" })
+                </div>
+                <div>
+                    <p>Tỉnh:</p>
+                    @Html.DropDownListFor(m => m.TINH, tinhthanh, "Chọn tỉnh thành", new { @class = "form-control" })
+                </div>
+                <div>
+                    <p>Địa chỉ:</p>
+                    @Html.TextBoxFor(m => m.DIACHICHITIET, new { @required = "required" })
+                </div>
+                <div>
+                    <p>Email:</p>
+                    @Html.TextBoxFor(m => m.EMAIL, new { @required = "required" })
+                </div>
+                <div>
+                    <p>Số điện thoại:</p>
+                    @Html.TextBoxFor(m => m.SDT, new { @required = "required" })
+                </div>
+                <div>
+                    <p>Câp độ:</p>
+                    @Html.TextBoxFor(m => m.CAPDO, new { @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="choseimg">
+                <img src="~/IMG/No-sanpham/user.png" width="50%" height="50%">
+            </div>
+        </div>
+
+        <div class="btnsub">
+            <button type="submit" style="border-radius: 5px; width: 30%; height:40px;">Lưu</button>
+        </div>
+    }
+</div>
+<!--End body cập nhật thông tin-->
